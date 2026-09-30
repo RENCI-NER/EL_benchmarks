@@ -11,7 +11,7 @@ from MedMentions, gpt-oss or o3-mini). A (mention, CURIE) judgment enters the tr
 - they conflicted and the adjudicator decided. Conflicts within the adjudicator's own assessment pair are
   resolved in the adjudicator's favor without review.
 Single-assessor judgments and judgments involving "unsure" are left out, and so are mentions whose MedMentions
-concept has a type in OUT_OF_SCOPE_TYPES.
+concept has a type in OUT_OF_SCOPE_TYPES (type from bagel-eval, else current NodeNorm) or is in OUT_OF_SCOPE_CONCEPTS.
 
 Outputs contain no assessor names.
 """
@@ -38,6 +38,20 @@ ADJUDICATOR = "Chris"
 OUT_OF_SCOPE_TYPES = {
     "biolink:InformationContentEntity", "biolink:Publication", "biolink:Activity", "biolink:Agent", "biolink:Device",
     "biolink:Phenomenon", "biolink:GeographicLocation", "biolink:Cohort", "biolink:PopulationOfIndividualOrganisms",
+}
+# MedMentions concepts (UMLS 2017) with no type in bagel-eval or current NodeNorm that aren't entities either;
+# mentions linked to them are left out. Untyped concepts that are real entities (e.g. retired CUIs for colorectal
+# cancer or TACE) are kept.
+OUT_OF_SCOPE_CONCEPTS = {
+    "UMLS:C0243126",  # incorporate / incorporation
+    "UMLS:C1443182",  # calculated
+    "UMLS:C1979936",  # nucleated
+    "UMLS:C0220911",  # serological
+    "UMLS:C0024752",  # human (retired)
+    "UMLS:C1836348",  # severe disorder
+    "UMLS:C1858576",  # heterogeneous disorders
+    "UMLS:C2986808",  # iTRAQ-labeled -> "Radioactive Label"
+    "UMLS:C1320357",  # pain intensity -> "Pain Distress Question"
 }
 NODENORM = "https://nodenormalization-sri.renci.org/get_normalized_nodes"
 
@@ -122,7 +136,14 @@ def prepare(dump: Path) -> None:
     verdicts = defaultdict(dict)
     for r in t["assessment"]:
         verdicts[(r["idx"], r["identifier"])][ASSESSOR_ALIASES.get(r["assessor"], r["assessor"])] = r["assessment"]
-    normalized = normalize(sorted({curie for _, curie in verdicts}))
+    judged_mentions = {idx for idx, _ in verdicts}
+    normalized = normalize(sorted({curie for _, curie in verdicts}
+                                  | {medmentions[idx] for idx in judged_mentions if idx in medmentions}))
+
+    def mention_type(idx):
+        """Type of the concept MedMentions linked the mention to: bagel-eval's, else current NodeNorm's."""
+        curie = medmentions.get(idx)
+        return entities.get(curie, {}).get("type") or (normalized.get(curie) or {}).get("type") or None
 
     WORK.mkdir(exist_ok=True)
     judgments, queue = [], defaultdict(list)
@@ -156,7 +177,7 @@ def prepare(dump: Path) -> None:
     with open(WORK / "mentions.json", "w") as out:
         json.dump({idx: {"pmid": mentions[idx]["pmid"], "mention": mentions[idx]["original_text"],
                          "expanded": mentions[idx]["expanded_text"], "medmentions_curie": medmentions.get(idx),
-                         "mention_type": entities.get(medmentions.get(idx), {}).get("type") or None}
+                         "mention_type": mention_type(idx)}
                    for idx in {j["mention_id"] for j in judgments}},
                   out)
     with open(WORK / "abstracts.json", "w") as out:
@@ -212,7 +233,8 @@ def truth() -> None:
         by_mention[j["mention_id"]].append({
             "curie": j["curie"], "babel_id": j["babel_id"], "label": j["label"], "type": j["type"],
             "verdict": verdict, "basis": basis, "proposed_by": j["proposed_by"]})
-    out_of_scope = [idx for idx in by_mention if mentions[idx]["mention_type"] in OUT_OF_SCOPE_TYPES]
+    out_of_scope = [idx for idx in by_mention if mentions[idx]["mention_type"] in OUT_OF_SCOPE_TYPES
+                    or mentions[idx]["medmentions_curie"] in OUT_OF_SCOPE_CONCEPTS]
     for idx in out_of_scope:
         del by_mention[idx]
     with open(TRUTH, "w") as out:

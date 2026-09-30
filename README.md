@@ -6,7 +6,7 @@ Datasets are meant to be static: each one is built by a documented script from a
 
 | Directory | What it is | Status |
 |---|---|---|
-| [`medmentions_assessed/`](medmentions_assessed/) | MedMentions mentions whose proposed links (from MedMentions, gpt-oss, o3-mini) were judged by two people in bagel-eval, plus adjudication of their disagreements | built: 1,517 mentions, 2,041 judgments |
+| [`medmentions_assessed/`](medmentions_assessed/) | MedMentions mentions whose proposed links (from MedMentions, gpt-oss, o3-mini) were judged by two people in bagel-eval, plus adjudication of their disagreements | built: 1,489 mentions, 2,006 judgments |
 | [`craft/`](craft/) | The CRAFT corpus concept annotations, adapted to Babel | planned |
 
 ```bash

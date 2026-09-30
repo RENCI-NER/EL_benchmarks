@@ -20,16 +20,18 @@ The verdicts are meant strictly: correct means the CURIE is the exact match, not
 
 ## Scope
 
-Mentions are left out when the concept MedMentions linked them to has one of these types (`OUT_OF_SCOPE_TYPES` in `build.py`): InformationContentEntity, Publication, Activity, Agent, Device, Phenomenon, GeographicLocation, Cohort, PopulationOfIndividualOrganisms. These mentions are mostly not biomedical entities: "negative", "analysis", "management", "worldwide", "patients". This removes 542 of 2,059 mentions.
+A mention's type (`mention_type`) is the type of the concept MedMentions linked it to: bagel-eval's type if it has one, otherwise current NodeNorm's. Mentions are left out when:
+- that type is in `OUT_OF_SCOPE_TYPES` (`build.py`): InformationContentEntity, Publication, Activity, Agent, Device, Phenomenon, GeographicLocation, Cohort, PopulationOfIndividualOrganisms. These are mostly not biomedical entities ("negative", "analysis", "worldwide", "patients", fields of study like "dermatology");
+- or the concept is in `OUT_OF_SCOPE_CONCEPTS`: 9 MedMentions concepts that have no type anywhere and aren't entities ("incorporate", "calculated", "nucleated", "severe disorder", ...).
 
-A mention's type (`mention_type`) comes from its MedMentions concept. It's null for 57 mentions whose MedMentions concept has no type in the bagel-eval database; those are kept.
+Together these remove 570 of 2,059 mentions. 27 mentions stay with no type. Their MedMentions concepts are UMLS CUIs that are retired or missing from Babel, but they're real entities (colorectal cancer, TACE, ground glass opacity, gene polymorphism, immune response).
 
-Built 2026-09-30: **1,517 mentions** from 101 abstracts, with 2,041 judgments. 1,293 mentions have at least one correct CURIE, and 224 have only incorrect ones. Precision of each system's judged proposals:
+Built 2026-09-30: **1,489 mentions** from 101 abstracts, with 2,006 judgments. 1,273 mentions have at least one correct CURIE, and 216 have only incorrect ones. Precision of each system's judged proposals:
 
 | | MedMentions | gpt-oss | o3-mini |
 |---|---|---|---|
-| judged links | 1,446 | 506 | 259 |
-| correct | 0.79 | 0.89 | 0.89 |
+| judged links | 1,419 | 498 | 259 |
+| correct | 0.79 | 0.88 | 0.89 |
 
 ## Building
 
