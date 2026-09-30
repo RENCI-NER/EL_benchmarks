@@ -66,7 +66,7 @@ function termLinks(t) {
     : [["Bioregistry", () => `https://bioregistry.io/${encodeURIComponent(t.curie)}`]]);
   const links = source.map(([label, url]) => [label, url(id, t.curie)]);
   // every identifier Babel considers equivalent, with labels
-  if (t.babel_id) links.push(["Babel", `https://nodenormalization-sri.renci.org/get_normalized_nodes?curie=${encodeURIComponent(t.curie)}&conflate=true&drug_chemical_conflate=true&description=true`]);
+  if (t.display.babel_id) links.push(["Babel", `https://nodenormalization-sri.renci.org/get_normalized_nodes?curie=${encodeURIComponent(t.curie)}&conflate=true&drug_chemical_conflate=true&description=true`]);
   return links;
 }
 
@@ -102,11 +102,11 @@ function render(data) {
     <div class="terms">${item.terms.map((t, i) => `
       <div class="term" id="t${i}">
         ${multi ? `<span class="key">${i + 1}</span>` : ""}
-        <span class="label">${esc(t.label) || "<i>(no label)</i>"}</span>
-        <div class="meta">${esc(t.curie)} · ${esc((t.type || "").replace("biolink:", ""))}</div>
-        ${t.description ? `<div class="desc">${esc(t.description)}</div>` : ""}
+        <span class="label">${esc(t.display.label) || "<i>(no label)</i>"}</span>
+        <div class="meta">${esc(t.curie)} · ${esc((t.display.type || "").replace("biolink:", ""))}</div>
+        ${t.display.description ? `<div class="desc">${esc(t.display.description)}</div>` : ""}
         <div class="links">${termLinks(t).map(([label, url]) =>
-          `<a href="${esc(url)}" target="_blank" rel="noopener">${esc(label)}</a>`).join("")}${t.babel_id ? "" : "<span class=\"meta\">not in Babel</span>"}</div>
+          `<a href="${esc(url)}" target="_blank" rel="noopener">${esc(label)}</a>`).join("")}${t.display.babel_id ? "" : "<span class=\"meta\">not in Babel</span>"}</div>
       </div>`).join("")}</div>`;
   keys.innerHTML = multi
     ? `<kbd>1</kbd>–<kbd>${item.terms.length}</kbd> only that one · <kbd>b</kbd> all · <kbd>n</kbd> none · ` +
