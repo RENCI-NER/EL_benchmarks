@@ -33,7 +33,7 @@ uv run python craft/build.py --craft ~/Projects/LitCoin/CRAFT            # --sam
 ## `truth.jsonl`
 
 ```json
-{"id": "craft-11319941-16658", "article": "11319941", "text": "<paragraph>", "mention": "cholinergic neurons",
+{"id": "craft-11319941-16658-16677", "article": "11319941", "text": "<paragraph>", "mention": "cholinergic neurons",
  "spans": [[1219, 1238]], "discontinuous": false, "closed_world": true,
  "judgments": [{"curie": "CL:0000108", "verdict": "correct", "ontology": "CL"}]}
 ```

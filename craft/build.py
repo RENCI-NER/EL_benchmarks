@@ -87,7 +87,9 @@ def items(craft: Path) -> list[dict]:
                 continue  # mentions spanning paragraphs (rare) have no single-paragraph context
             seen.add(mention)
             out.append({
-                "id": f"craft-{article}-{spans[0][0]}", "article": article, "text": text[p_start:p_end],
+                # the spans identify the occurrence; a start offset alone doesn't ("cell" and "cell line")
+                "id": f"craft-{article}-" + "_".join(f"{s}-{e}" for s, e in spans), "article": article,
+                "text": text[p_start:p_end],
                 "mention": mention, "spans": [[s - p_start, e - p_start] for s, e in spans],
                 "discontinuous": len(spans) > 1, "closed_world": True,
                 "judgments": [{"curie": c, "verdict": "correct", "ontology": o} for c, o in sorted(gold[spans].items())],
@@ -102,6 +104,9 @@ def main():
     parser.add_argument("--seed", type=int, default=0)
     args = parser.parse_args()
     everything = items(args.craft)
+    ids = [i["id"] for i in everything]
+    if len(set(ids)) != len(ids):
+        raise ValueError("duplicate item ids")
     sample = sorted(random.Random(args.seed).sample(everything, args.sample), key=lambda i: i["id"])
     with open(TRUTH, "w") as out:
         for item in sample:
