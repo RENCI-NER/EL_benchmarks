@@ -44,7 +44,7 @@ uv run python medmentions_assessed/build.py scope      # only to change the scop
 uv run python medmentions_assessed/build.py truth
 ```
 
-`prepare` writes `work/` (git-ignored). The app appends every decision to `adjudications.jsonl`, which is committed. `truth` writes `truth.jsonl` from `work/`, `adjudications.jsonl` and `scope.jsonl`, without calling any service.
+`prepare` writes `work/` (git-ignored). The app appends every decision to `adjudications.jsonl`, which is committed. `truth` writes `truth.jsonl` from `work/`, `adjudications.jsonl` and `scope.jsonl`, without calling any service. It also writes `documents.jsonl`, one `{"id", "text"}` line per abstract, for document-level steps such as abbreviation extraction.
 
 ## Adjudication app
 

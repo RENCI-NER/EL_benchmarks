@@ -22,6 +22,7 @@ from pathlib import Path
 
 HERE = Path(__file__).parent
 TRUTH = HERE / "truth.jsonl"
+DOCUMENTS = HERE / "documents.jsonl"  # full article text, for document-level steps such as abbreviations
 CORE = ["CHEBI", "CL", "GO_BP", "GO_CC", "GO_MF", "NCBITaxon", "UBERON"]  # knowtator format
 MONDO = "MONDO/MONDO_without_genotype_annotations/knowtator-2"  # knowtator-2 format
 OBO_PURL = re.compile(r"^http://purl\.obolibrary\.org/obo/([A-Za-z]+)_(.+)$")
@@ -111,6 +112,10 @@ def main():
     with open(TRUTH, "w") as out:
         for item in sample:
             out.write(json.dumps(item) + "\n")
+    with open(DOCUMENTS, "w") as out:
+        for article in sorted({i["article"] for i in sample}):
+            out.write(json.dumps({"id": article, "text": (args.craft / "articles" / "txt" / f"{article}.txt").read_text()})
+                      + "\n")
     print(f"{len(everything)} distinct (article, mention) items; wrote a sample of {len(sample)} to {TRUTH}")
 
 

@@ -34,6 +34,7 @@ CONFLICTS = WORK / "conflicts.jsonl"
 JUDGMENTS = WORK / "judgments.jsonl"
 ADJUDICATIONS = HERE / "adjudications.jsonl"
 TRUTH = HERE / "truth.jsonl"
+DOCUMENTS = HERE / "documents.jsonl"  # full text per document, for document-level steps such as abbreviations
 SCOPE = HERE / "scope.jsonl"
 
 TABLES = ("abstracts", "recognized_entities", "assessment", "results", "entities")
@@ -284,6 +285,9 @@ def truth() -> None:
                                   "mention": m["mention"], "expanded": m["expanded"],
                                   "mention_type": scopes[idx]["mention_type"], "medmentions_curie": m["medmentions_curie"],
                                   "closed_world": False, "judgments": by_mention[idx]}) + "\n")
+    with open(DOCUMENTS, "w") as out:
+        for pmid in sorted({mentions[idx]["pmid"] for idx in by_mention}, key=int):
+            out.write(json.dumps({"id": pmid, "text": abstracts[pmid]}) + "\n")
     n = sum(len(v) for v in by_mention.values())
     print(f"wrote {len(by_mention)} mentions / {n} judgments to {TRUTH}; left out {len(out_of_scope)} out-of-scope "
           f"mentions; {unresolved} conflicts not yet adjudicated")

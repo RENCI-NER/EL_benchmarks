@@ -4,7 +4,7 @@ Benchmarks for evaluating biomedical entity linking: a mention in text → a Bab
 
 Datasets are meant to be static: each one is built by a documented script from a named source, and the built files are committed.
 
-Benchmarks hold the source's own identifiers. Deciding whether a linker's output matches one (the same identifier, or the same concept in some Babel release) is up to the evaluation, so a benchmark doesn't change meaning with a Babel release. Each item says whether it is `closed_world`: whether an identifier that doesn't match the gold is wrong (CRAFT) or only unjudged (MedMentions-assessed).
+Benchmarks hold the source's own identifiers. Deciding whether a linker's output matches one (the same identifier, or the same concept in some Babel release) is up to the evaluation, so a benchmark doesn't change meaning with a Babel release. Each benchmark has a `truth.jsonl` of items and a `documents.jsonl` with the full text of each source document, for steps that work on whole documents, such as abbreviation extraction. Each item says whether it is `closed_world`: whether an identifier that doesn't match the gold is wrong (CRAFT) or only unjudged (MedMentions-assessed).
 
 | Directory | What it is | Status |
 |---|---|---|

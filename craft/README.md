@@ -40,9 +40,11 @@ uv run python craft/build.py --craft ~/Projects/LitCoin/CRAFT            # --sam
 
 `spans` are character offsets into `text`.
 
+`documents.jsonl` has the full text of each article in the sample, one `{"id", "text"}` line per article, with `id` the item's `article`. Use it for document-level steps: abbreviations in particular are often defined in a different paragraph from the mention.
+
 ## Known difficulties
 
 These come from a first look at retrieval (NameRes + SapBERT, top 10 each), on 2026-09-29:
 - **Recall** of the gold concept was 0.55–0.73 per ontology.
-- **Abbreviations are defined elsewhere in the article** (`ER`, `PM`, `EtOH`, `NaF`), but the item's context is a single paragraph. A linker needs a document-level abbreviation map, which this benchmark doesn't provide.
+- **Abbreviations are often defined elsewhere in the article** (`ER`, `PM`), but the item's context is a single paragraph. A linker needs a document-level abbreviation map, built from `documents.jsonl`. Few sampled mentions depend on one, though: with abbreviations extracted by gpt-4o-mini, 19 of the 1,000 expand. Others (`EtOH`, `NaF`) are never defined in the article at all.
 - **Variants, typos and everyday words** for taxa (`T. rubripes`, `man`, `person`).
