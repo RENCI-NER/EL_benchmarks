@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Adjudicate</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root { --bg: #fafaf8; --fg: #1d1d1b; --muted: #6b6b66; --line: #e2e1dc; --hl: #ffe08a; --card: #fff;
+          --sel: #1f7a4d; --selbg: #e6f4ec; --bad: #b3261e; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #161615; --fg: #ecebe6; --muted: #9a9993; --line: #34332f; --hl: #6b5510; --card: #1f1f1d;
+            --sel: #5cc48f; --selbg: #173325; --bad: #f2887f; }
+  }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.5 system-ui, sans-serif; }
+  main { max-width: 900px; margin: 0 auto; padding: 16px; }
+  header { display: flex; justify-content: space-between; align-items: baseline; color: var(--muted); font-size: 14px; }
+  .mention { font-size: 26px; font-weight: 600; margin: 12px 0 2px; }
+  .expanded { color: var(--muted); margin-bottom: 12px; }
+  .abstract { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px;
+              max-height: 42vh; overflow: auto; }
+  mark { background: var(--hl); color: inherit; border-radius: 3px; padding: 0 2px; }
+  .terms { display: grid; gap: 10px; margin-top: 14px; }
+  .term { background: var(--card); border: 2px solid var(--line); border-radius: 8px; padding: 10px 14px; }
+  .term.on { border-color: var(--sel); background: var(--selbg); }
+  .term .key { display: inline-block; min-width: 22px; font-weight: 700; color: var(--muted); }
+  .term .label { font-size: 19px; font-weight: 600; }
+  .term .meta { color: var(--muted); font-size: 14px; }
+  .term .desc { font-size: 14px; margin-top: 4px; }
+  .keys { margin-top: 14px; color: var(--muted); font-size: 14px; }
+  kbd { border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 4px; padding: 0 5px; font-size: 13px; }
+  .done { font-size: 22px; margin-top: 40px; }
+  .flash { color: var(--bad); }
+</style>
+</head>
+<body>
+<main>
+  <header><span id="progress"></span><span id="status"></span></header>
+  <div id="view"></div>
+  <div class="keys" id="keys"></div>
+</main>
+<script>
+let item = null, selected = new Set(), busy = false;  // busy: ignore keys until the next item is shown
+
+const esc = s => (s || "").replace(/[&<>"]/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"}[c]));
+const reEsc = s => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+function highlight(text, needles) {
+  let html = esc(text);
+  for (const n of needles.filter(Boolean).sort((a, b) => b.length - a.length)) {
+    html = html.replace(new RegExp(reEsc(esc(n)), "gi"), m => `<mark>${m}</mark>`);
+  }
+  return html;
+}
+
+function render(data) {
+  item = data.item; selected = new Set();
+  const p = data.progress;
+  document.getElementById("progress").textContent =
+    `${p.decided} / ${p.total} decided` + (p.skipped ? ` · ${p.skipped} skipped` : "");
+  const view = document.getElementById("view"), keys = document.getElementById("keys");
+  if (!item) {
+    view.innerHTML = `<div class="done">All done.` + (p.skipped ? ` <a href="#" id="skips">Review ${p.skipped} skipped</a>` : "") + `</div>`;
+    keys.innerHTML = `<kbd>z</kbd> undo last`;
+    const s = document.getElementById("skips");
+    if (s) s.onclick = e => { e.preventDefault(); load("/api/next?skips=1"); };
+    return;
+  }
+  const multi = item.terms.length > 1;
+  view.innerHTML = `
+    <div class="mention">${esc(item.mention)}</div>
+    ${item.expanded && item.expanded !== item.mention ? `<div class="expanded">expanded: ${esc(item.expanded)}</div>` : ""}
+    <div class="abstract">${highlight(item.abstract, [item.mention])}</div>
+    <div class="terms">${item.terms.map((t, i) => `
+      <div class="term" id="t${i}">
+        ${multi ? `<span class="key">${i + 1}</span>` : ""}
+        <span class="label">${esc(t.label) || "<i>(no label)</i>"}</span>
+        <div class="meta">${esc(t.curie)} · ${esc((t.type || "").replace("biolink:", ""))}</div>
+        ${t.description ? `<div class="desc">${esc(t.description)}</div>` : ""}
+      </div>`).join("")}</div>`;
+  keys.innerHTML = multi
+    ? `<kbd>1</kbd>–<kbd>${item.terms.length}</kbd> only that one · <kbd>b</kbd> all · <kbd>n</kbd> none · ` +
+      `<kbd>shift</kbd>+number toggle, <kbd>enter</kbd> submit · <kbd>u</kbd> skip · <kbd>z</kbd> undo`
+    : `<kbd>y</kbd> correct · <kbd>n</kbd> wrong · <kbd>u</kbd> skip · <kbd>z</kbd> undo`;
+  document.querySelector(".abstract mark")?.scrollIntoView({block: "center"});
+}
+
+async function load(url, body) {
+  if (busy) return;
+  busy = true;
+  try { await request(url, body); } finally { busy = false; }
+}
+
+async function request(url, body) {
+  const r = await fetch(url, body ? {method: "POST", headers: {"Content-Type": "application/json"},
+                                        body: JSON.stringify(body)} : {});
+  const data = await r.json();
+  if (data.error) { document.getElementById("status").innerHTML = `<span class="flash">${esc(data.error)}</span>`; return; }
+  document.getElementById("status").textContent = "";
+  render(data);
+}
+
+const decide = correct => load("/api/decide", {mention_id: item.mention_id, correct});
+const curies = () => item.terms.map(t => t.curie);
+
+document.addEventListener("keydown", e => {
+  if (e.metaKey || e.ctrlKey || e.altKey) return;
+  const k = e.key.toLowerCase();
+  if (k === "z") return load("/api/undo", {});
+  if (!item) return;
+  const multi = item.terms.length > 1;
+  const digit = /^Digit([1-9])$/.exec(e.code);
+  if (!multi && k === "y") return decide(curies());
+  if (k === "n") return decide([]);
+  if (k === "u") return load("/api/skip", {mention_id: item.mention_id});
+  if (multi && k === "b") return decide(curies());
+  if (multi && digit) {
+    const i = +digit[1] - 1;
+    if (i >= item.terms.length) return;
+    if (!e.shiftKey) return decide([item.terms[i].curie]);
+    const c = item.terms[i].curie;
+    selected.has(c) ? selected.delete(c) : selected.add(c);
+    document.getElementById(`t${i}`).classList.toggle("on", selected.has(c));
+    return;
+  }
+  if (multi && k === "enter") return decide([...selected]);
+});
+
+load("/api/next");
+</script>
+</body>
+</html>

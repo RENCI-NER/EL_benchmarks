@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+.pytest_cache/
+.DS_Store
+# generated from the bagel-eval dump; rebuild with `prepare`
+medmentions_assessed/work/
+# never commit database dumps (they contain assessor names and role password hashes)
+*.sql
+*.sql.gz
