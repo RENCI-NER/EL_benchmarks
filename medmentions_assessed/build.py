@@ -10,7 +10,8 @@ from MedMentions, gpt-oss or o3-mini). A (mention, CURIE) judgment enters the tr
 - two assessors gave the same verdict (both agree -> correct, both disagree -> incorrect), or
 - they conflicted and the adjudicator decided. Conflicts within the adjudicator's own assessment pair are
   resolved in the adjudicator's favor without review.
-Single-assessor judgments and judgments involving "unsure" are left out.
+Single-assessor judgments and judgments involving "unsure" are left out, and so are mentions whose MedMentions
+concept has a type in OUT_OF_SCOPE_TYPES.
 
 Outputs contain no assessor names.
 """
@@ -32,6 +33,12 @@ TRUTH = HERE / "truth.jsonl"
 TABLES = ("abstracts", "recognized_entities", "assessment", "results", "entities")
 ASSESSOR_ALIASES = {"Hong Yi": "Hong", "Sua\\parna": "Suparna"}  # same people under two names
 ADJUDICATOR = "Chris"
+# Mentions whose MedMentions-assigned concept has one of these types are not biomedical entities worth linking
+# ("negative", "analysis", "management", "worldwide", "patients", ...) and are left out of the truth set.
+OUT_OF_SCOPE_TYPES = {
+    "biolink:InformationContentEntity", "biolink:Publication", "biolink:Activity", "biolink:Agent", "biolink:Device",
+    "biolink:Phenomenon", "biolink:GeographicLocation", "biolink:Cohort", "biolink:PopulationOfIndividualOrganisms",
+}
 NODENORM = "https://nodenormalization-sri.renci.org/get_normalized_nodes"
 
 
@@ -106,9 +113,12 @@ def prepare(dump: Path) -> None:
     mentions = {r["id"]: r for r in t["recognized_entities"]}
     entities = {r["identifier"]: r for r in t["entities"]}
     proposed = defaultdict(set)
+    medmentions = {}
     for r in t["results"]:
         if r["identifier"]:
             proposed[(r["idx"], r["identifier"])].add(r["model"])
+            if r["model"] == "medmentions":
+                medmentions[r["idx"]] = r["identifier"]
     verdicts = defaultdict(dict)
     for r in t["assessment"]:
         verdicts[(r["idx"], r["identifier"])][ASSESSOR_ALIASES.get(r["assessor"], r["assessor"])] = r["assessment"]
@@ -145,7 +155,9 @@ def prepare(dump: Path) -> None:
                                   "terms": queue[idx]}) + "\n")
     with open(WORK / "mentions.json", "w") as out:
         json.dump({idx: {"pmid": mentions[idx]["pmid"], "mention": mentions[idx]["original_text"],
-                         "expanded": mentions[idx]["expanded_text"]} for idx in {j["mention_id"] for j in judgments}},
+                         "expanded": mentions[idx]["expanded_text"], "medmentions_curie": medmentions.get(idx),
+                         "mention_type": entities.get(medmentions.get(idx), {}).get("type") or None}
+                   for idx in {j["mention_id"] for j in judgments}},
                   out)
     with open(WORK / "abstracts.json", "w") as out:
         json.dump({m["pmid"]: abstracts[m["pmid"]] for m in (mentions[i] for i in {j["mention_id"] for j in judgments})},
@@ -200,14 +212,19 @@ def truth() -> None:
         by_mention[j["mention_id"]].append({
             "curie": j["curie"], "babel_id": j["babel_id"], "label": j["label"], "type": j["type"],
             "verdict": verdict, "basis": basis, "proposed_by": j["proposed_by"]})
+    out_of_scope = [idx for idx in by_mention if mentions[idx]["mention_type"] in OUT_OF_SCOPE_TYPES]
+    for idx in out_of_scope:
+        del by_mention[idx]
     with open(TRUTH, "w") as out:
         for idx in sorted(by_mention, key=int):
             m = mentions[idx]
             out.write(json.dumps({"id": f"mm-assessed-{idx}", "pmid": m["pmid"], "text": abstracts[m["pmid"]],
                                   "mention": m["mention"], "expanded": m["expanded"],
+                                  "mention_type": m["mention_type"], "medmentions_curie": m["medmentions_curie"],
                                   "judgments": by_mention[idx], "nodenorm_date": str(date.today())}) + "\n")
     n = sum(len(v) for v in by_mention.values())
-    print(f"wrote {len(by_mention)} mentions / {n} judgments to {TRUTH}; {unresolved} conflicts not yet adjudicated")
+    print(f"wrote {len(by_mention)} mentions / {n} judgments to {TRUTH}; left out {len(out_of_scope)} mentions of "
+          f"out-of-scope types; {unresolved} conflicts not yet adjudicated")
 
 
 def main():

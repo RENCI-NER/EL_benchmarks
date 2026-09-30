@@ -18,6 +18,19 @@ The verdicts are meant strictly: correct means the CURIE is the exact match, not
 
 "Hong" and "Hong Yi" are the same assessor. No assessor names appear in any output.
 
+## Scope
+
+Mentions are left out when the concept MedMentions linked them to has one of these types (`OUT_OF_SCOPE_TYPES` in `build.py`): InformationContentEntity, Publication, Activity, Agent, Device, Phenomenon, GeographicLocation, Cohort, PopulationOfIndividualOrganisms. These mentions are mostly not biomedical entities: "negative", "analysis", "management", "worldwide", "patients". This removes 542 of 2,059 mentions.
+
+A mention's type (`mention_type`) comes from its MedMentions concept. It's null for 57 mentions whose MedMentions concept has no type in the bagel-eval database; those are kept.
+
+Built 2026-09-30: **1,517 mentions** from 101 abstracts, with 2,041 judgments. 1,293 mentions have at least one correct CURIE, and 224 have only incorrect ones. Precision of each system's judged proposals:
+
+| | MedMentions | gpt-oss | o3-mini |
+|---|---|---|---|
+| judged links | 1,446 | 506 | 259 |
+| correct | 0.79 | 0.89 | 0.89 |
+
 ## Building
 
 The source is a dump of the bagel-eval Postgres database. Don't commit it: it contains assessor names and role password hashes.
@@ -47,6 +60,7 @@ One line per mention:
 
 ```json
 {"id": "mm-assessed-0", "pmid": "25763772", "text": "<title + abstract>", "mention": "DCTN4", "expanded": "dynactin 4",
+ "mention_type": "biolink:Gene", "medmentions_curie": "NCBIGene:51164",
  "judgments": [{"curie": "NCBIGene:51164", "babel_id": "NCBIGene:51164", "label": "DCTN4", "type": "biolink:Gene",
                 "verdict": "correct", "basis": "concordant", "proposed_by": ["gpt-oss", "medmentions", "o3-mini-2025-01-31"]}],
  "nodenorm_date": "2026-09-29"}
