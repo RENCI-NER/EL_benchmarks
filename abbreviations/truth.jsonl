@@ -1,0 +1,418 @@
+{"id": "27299916-217", "document": "27299916", "start": 217, "end": 228, "inner": "Fe(III)PPIX", "label": "same"}
+{"id": "27348135-198", "document": "27348135", "start": 198, "end": 200, "inner": "HF", "label": "same"}
+{"id": "27348135-334", "document": "27348135", "start": 334, "end": 362, "inner": "mean age 76 \u00b1 14, 56% female", "label": "other"}
+{"id": "27348135-365", "document": "27348135", "start": 365, "end": 374, "inner": "N = 1,714", "label": "other"}
+{"id": "27348135-488", "document": "27348135", "start": 488, "end": 490, "inner": "CV", "label": "same"}
+{"id": "27348135-968", "document": "27348135", "start": 968, "end": 997, "inner": "HR = 1.14, 95% CI = 1.08-1.20", "label": "other"}
+{"id": "27348135-1032", "document": "27348135", "start": 1032, "end": 1061, "inner": "HR = 1.26, 95% CI = 1.20-1.32", "label": "other"}
+{"id": "27348135-1163", "document": "27348135", "start": 1163, "end": 1192, "inner": "HR = 1.31, 95% CI = 1.19-1.44", "label": "other"}
+{"id": "27348135-1228", "document": "27348135", "start": 1228, "end": 1257, "inner": "HR = 1.18, 95% CI = 1.07-1.29", "label": "other"}
+{"id": "27348135-1423", "document": "27348135", "start": 1423, "end": 1452, "inner": "HR = 1.10, 95% CI = 1.06-1.15", "label": "other"}
+{"id": "27359178-185", "document": "27359178", "start": 185, "end": 188, "inner": "SNS", "label": "same"}
+{"id": "27359178-696", "document": "27359178", "start": 696, "end": 760, "inner": "WHHL; relative to normolipidemic New Zealand white rabbits [NZW]", "label": "same"}
+{"id": "27359178-1305", "document": "27359178", "start": 1305, "end": 1329, "inner": "F(1,41) = 55.3, p < .001", "label": "other"}
+{"id": "27359178-1480", "document": "27359178", "start": 1480, "end": 1503, "inner": "r(21) = 0.855, p < .001", "label": "other"}
+{"id": "27359178-1564", "document": "27359178", "start": 1564, "end": 1610, "inner": "aortic arch: p = .078, thoracic aorta: p = .34", "label": "other"}
+{"id": "27359178-1622", "document": "27359178", "start": 1622, "end": 1654, "inner": "arch: p = .97, thoracic: p = .61", "label": "other"}
+{"id": "27370179-134", "document": "27370179", "start": 134, "end": 154, "inner": "non-English speaking", "label": "other"}
+{"id": "27434112-864", "document": "27434112", "start": 864, "end": 877, "inner": "sunflower oil", "label": "other"}
+{"id": "27434112-1318", "document": "27434112", "start": 1318, "end": 1328, "inner": "in females", "label": "other"}
+{"id": "27434112-1414", "document": "27434112", "start": 1414, "end": 1422, "inner": "in males", "label": "other"}
+{"id": "27435854-39", "document": "27435854", "start": 39, "end": 43, "inner": "A549", "label": "instance"}
+{"id": "27435854-537", "document": "27435854", "start": 537, "end": 541, "inner": "PAPV", "label": "same"}
+{"id": "27435854-832", "document": "27435854", "start": 832, "end": 837, "inner": "\u03b3H2AX", "label": "same"}
+{"id": "27446048-739", "document": "27446048", "start": 739, "end": 755, "inner": "1.9 \u00c5 resolution", "label": "other"}
+{"id": "27446048-1203", "document": "27446048", "start": 1203, "end": 1223, "inner": "K d = 1.6 \u00d7 10(-7) M", "label": "other"}
+{"id": "27457539-705", "document": "27457539", "start": 705, "end": 745, "inner": "through a neutralizing antibody response", "label": "other"}
+{"id": "27457539-889", "document": "27457539", "start": 889, "end": 925, "inner": "that 12 camels and 4 pregnant camels", "label": "other"}
+{"id": "27473375-38", "document": "27473375", "start": 38, "end": 54, "inner": "can do treatment", "label": "instance"}
+{"id": "27473375-279", "document": "27473375", "start": 279, "end": 281, "inner": "MS", "label": "same"}
+{"id": "27473375-348", "document": "27473375", "start": 348, "end": 353, "inner": "HRQoL", "label": "same"}
+{"id": "27473375-478", "document": "27473375", "start": 478, "end": 494, "inner": "Can Do treatment", "label": "instance"}
+{"id": "27473375-617", "document": "27473375", "start": 617, "end": 621, "inner": "RRMS", "label": "same"}
+{"id": "27473375-1183", "document": "27473375", "start": 1183, "end": 1203, "inner": "response rate 66.7 %", "label": "other"}
+{"id": "27473375-1414", "document": "27473375", "start": 1414, "end": 1426, "inner": "all P < 0.05", "label": "other"}
+{"id": "27473375-1525", "document": "27473375", "start": 1525, "end": 1559, "inner": "P = 0.087, P = 0.080, respectively", "label": "other"}
+{"id": "27473429-155", "document": "27473429", "start": 155, "end": 158, "inner": "PCR", "label": "same"}
+{"id": "27473429-698", "document": "27473429", "start": 698, "end": 726, "inner": "diameter 20 mm, height 55 mm", "label": "other"}
+{"id": "27473429-774", "document": "27473429", "start": 774, "end": 810, "inner": "length 2 m, I.D. 100 \u03bcm, O.D. 400 \u03bcm", "label": "other"}
+{"id": "27473429-928", "document": "27473429", "start": 928, "end": 996, "inner": "for providing temperatures of denaturation, annealing, and extension", "label": "other"}
+{"id": "27473429-1039", "document": "27473429", "start": 1039, "end": 1071, "inner": "height 55 mm, base 60 mm \u00d7 60 mm", "label": "other"}
+{"id": "27473429-1138", "document": "27473429", "start": 1138, "end": 1272, "inner": "run -to- run and station -to- station relative standard deviation of their amplification is lower than 6 % and about 4 %, respectively", "label": "other"}
+{"id": "27473429-1428", "document": "27473429", "start": 1428, "end": 1454, "inner": "323, 608, 828, and 1101 bp", "label": "other"}
+{"id": "27473429-1600", "document": "27473429", "start": 1600, "end": 1622, "inner": "323, 1101, and 2836 bp", "label": "other"}
+{"id": "27493840-367", "document": "27493840", "start": 367, "end": 384, "inner": "anti-inflammatory", "label": "instance"}
+{"id": "27493840-483", "document": "27493840", "start": 483, "end": 499, "inner": "pro-inflammatory", "label": "instance"}
+{"id": "27493840-784", "document": "27493840", "start": 784, "end": 787, "inner": "AUC", "label": "same"}
+{"id": "27493840-816", "document": "27493840", "start": 816, "end": 820, "inner": "Cmax", "label": "same"}
+{"id": "27493840-1011", "document": "27493840", "start": 1011, "end": 1029, "inner": "750 mg and 1000 mg", "label": "other"}
+{"id": "27493840-1132", "document": "27493840", "start": 1132, "end": 1160, "inner": "tocotrienols and tocopherols", "label": "instance"}
+{"id": "27493840-1418", "document": "27493840", "start": 1418, "end": 1425, "inner": "3/ dose", "label": "other"}
+{"id": "27493840-1758", "document": "27493840", "start": 1758, "end": 1763, "inner": "ng/ml", "label": "other"}
+{"id": "27493840-1865", "document": "27493840", "start": 1865, "end": 1871, "inner": "P<0.05", "label": "other"}
+{"id": "27493840-1997", "document": "27493840", "start": 1997, "end": 2003, "inner": "t1/2 h", "label": "other"}
+{"id": "27493840-2036", "document": "27493840", "start": 2036, "end": 2045, "inner": "Cl-T, l/h", "label": "other"}
+{"id": "27493840-2085", "document": "27493840", "start": 2085, "end": 2095, "inner": "Vd/f, mg/h", "label": "other"}
+{"id": "27493840-2140", "document": "27493840", "start": 2140, "end": 2149, "inner": "ke; h(-1)", "label": "other"}
+{"id": "27493840-2613", "document": "27493840", "start": 2613, "end": 2616, "inner": "6 h", "label": "other"}
+{"id": "27496995-890", "document": "27496995", "start": 890, "end": 893, "inner": "PCR", "label": "same"}
+{"id": "27496995-923", "document": "27496995", "start": 923, "end": 928, "inner": "MLPCR", "label": "same"}
+{"id": "27496995-1038", "document": "27496995", "start": 1038, "end": 1041, "inner": "iid", "label": "same"}
+{"id": "27496995-1056", "document": "27496995", "start": 1056, "end": 1060, "inner": "pink", "label": "other"}
+{"id": "27498099-448", "document": "27498099", "start": 448, "end": 455, "inner": "n = 492", "label": "other"}
+{"id": "27498099-705", "document": "27498099", "start": 705, "end": 775, "inner": "number of logins, time on site, modules viewed, action plans completed", "label": "other"}
+{"id": "27498099-831", "document": "27498099", "start": 831, "end": 881, "inner": "website acceptability, physical activity behaviour", "label": "other"}
+{"id": "27498099-1048", "document": "27498099", "start": 1048, "end": 1073, "inner": "using multiple imputation", "label": "other"}
+{"id": "27498099-1156", "document": "27498099", "start": 1156, "end": 1183, "inner": "b = 2.2 95 % CI = 0.02-4.53", "label": "other"}
+{"id": "27498099-1248", "document": "27498099", "start": 1248, "end": 1279, "inner": "IRR = 1.88, 95 % CI = 1.16-3.04", "label": "other"}
+{"id": "27498099-1551", "document": "27498099", "start": 1551, "end": 1571, "inner": "53 vs 40 %, p = 0.02", "label": "other"}
+{"id": "27498099-1696", "document": "27498099", "start": 1696, "end": 1716, "inner": "60 vs 46 %; p = 0.01", "label": "other"}
+{"id": "27502245-73", "document": "27502245", "start": 73, "end": 75, "inner": "M1", "label": "instance"}
+{"id": "27502245-148", "document": "27502245", "start": 148, "end": 150, "inner": "M2", "label": "instance"}
+{"id": "27502245-234", "document": "27502245", "start": 234, "end": 236, "inner": "OA", "label": "same"}
+{"id": "27502245-446", "document": "27502245", "start": 446, "end": 449, "inner": "MCM", "label": "same"}
+{"id": "27502245-555", "document": "27502245", "start": 555, "end": 566, "inner": "IFN\u03b3 + TNF\u03b1", "label": "instance"}
+{"id": "27502245-593", "document": "27502245", "start": 593, "end": 597, "inner": "IL-4", "label": "instance"}
+{"id": "27502245-605", "document": "27502245", "start": 605, "end": 610, "inner": "IL-10", "label": "instance"}
+{"id": "27502245-920", "document": "27502245", "start": 920, "end": 922, "inner": "NO", "label": "same"}
+{"id": "27502245-970", "document": "27502245", "start": 970, "end": 974, "inner": "GAGs", "label": "same"}
+{"id": "27502245-1044", "document": "27502245", "start": 1044, "end": 1058, "inner": "Interleukin 1\u03b2", "label": "same"}
+{"id": "27502245-1073", "document": "27502245", "start": 1073, "end": 1100, "inner": "Matrix Metalloproteinase-13", "label": "same"}
+{"id": "27502245-1115", "document": "27502245", "start": 1115, "end": 1179, "inner": "A Disintegrin And Metalloproteinase with Thrombospondin Motifs-5", "label": "same"}
+{"id": "27502245-1205", "document": "27502245", "start": 1205, "end": 1213, "inner": "aggrecan", "label": "same"}
+{"id": "27502245-1227", "document": "27502245", "start": 1227, "end": 1243, "inner": "collagen type II", "label": "same"}
+{"id": "27502245-1313", "document": "27502245", "start": 1313, "end": 1318, "inner": "SOCS1", "label": "same"}
+{"id": "27504849-236", "document": "27504849", "start": 236, "end": 239, "inner": "SLN", "label": "same"}
+{"id": "27504849-624", "document": "27504849", "start": 624, "end": 627, "inner": "PBD", "label": "same"}
+{"id": "27504849-794", "document": "27504849", "start": 794, "end": 802, "inner": "N = 1024", "label": "other"}
+{"id": "27504849-1053", "document": "27504849", "start": 1053, "end": 1062, "inner": "blue-only", "label": "other"}
+{"id": "27504849-1129", "document": "27504849", "start": 1129, "end": 1137, "inner": "hot-only", "label": "other"}
+{"id": "27513632-123", "document": "27513632", "start": 123, "end": 126, "inner": "miR", "label": "same"}
+{"id": "27513632-198", "document": "27513632", "start": 198, "end": 201, "inner": "EMT", "label": "same"}
+{"id": "27513632-235", "document": "27513632", "start": 235, "end": 240, "inner": "HMGA2", "label": "same"}
+{"id": "27513632-498", "document": "27513632", "start": 498, "end": 501, "inner": "IPF", "label": "same"}
+{"id": "27513632-595", "document": "27513632", "start": 595, "end": 598, "inner": "HBE", "label": "same"}
+{"id": "27513632-802", "document": "27513632", "start": 802, "end": 808, "inner": "TGF\u2011\u03b21", "label": "same"}
+{"id": "27513632-1610", "document": "27513632", "start": 1610, "end": 1613, "inner": "BLM", "label": "same"}
+{"id": "27516254-334", "document": "27516254", "start": 334, "end": 351, "inner": "0.5, 1 and 2% wt.", "label": "other"}
+{"id": "27516254-464", "document": "27516254", "start": 464, "end": 509, "inner": "methylcellulose, locust bean gum and guar gum", "label": "other"}
+{"id": "27542694-709", "document": "27542694", "start": 709, "end": 717, "inner": "LC-MS/MS", "label": "same"}
+{"id": "27542694-945", "document": "27542694", "start": 945, "end": 952, "inner": "vinegar", "label": "other"}
+{"id": "27560368-532", "document": "27560368", "start": 532, "end": 548, "inner": "valid or invalid", "label": "other"}
+{"id": "27560368-636", "document": "27560368", "start": 636, "end": 658, "inner": "electroencephalography", "label": "other"}
+{"id": "27560368-713", "document": "27560368", "start": 713, "end": 747, "inner": "manual and saccadic reaction times", "label": "other"}
+{"id": "27560368-797", "document": "27560368", "start": 797, "end": 827, "inner": "i.e. lower spatial frequencies", "label": "other"}
+{"id": "27560368-837", "document": "27560368", "start": 837, "end": 868, "inner": "i.e. higher spatial frequencies", "label": "other"}
+{"id": "27560368-912", "document": "27560368", "start": 912, "end": 945, "inner": "i.e. mid-band spatial frequencies", "label": "other"}
+{"id": "27560368-1006", "document": "27560368", "start": 1006, "end": 1031, "inner": "i.e. valid versus invalid", "label": "other"}
+{"id": "27566296-148", "document": "27566296", "start": 148, "end": 150, "inner": "RV", "label": "same"}
+{"id": "27566296-176", "document": "27566296", "start": 176, "end": 178, "inner": "PA", "label": "same"}
+{"id": "27566296-294", "document": "27566296", "start": 294, "end": 297, "inner": "PAH", "label": "same"}
+{"id": "27566296-826", "document": "27566296", "start": 826, "end": 828, "inner": "Z0", "label": "same"}
+{"id": "27566296-936", "document": "27566296", "start": 936, "end": 939, "inner": "CPA", "label": "same"}
+{"id": "27566296-1029", "document": "27566296", "start": 1029, "end": 1080, "inner": "ZC =2.31\u00b10.38 vs 1.33\u00b10.15 WU\u00d7m(2) at rest; p=0.003", "label": "other"}
+{"id": "27566296-1115", "document": "27566296", "start": 1115, "end": 1174, "inner": "CPA =0.88\u00b10.10 vs 1.32\u00b10.17 mL/mm Hg/m(2) at rest; p=0.0002", "label": "other"}
+{"id": "27566296-1250", "document": "27566296", "start": 1250, "end": 1252, "inner": "RC", "label": "same"}
+{"id": "27566296-1284", "document": "27566296", "start": 1284, "end": 1326, "inner": "0.67\u00b10.05 vs 1.00\u00b10.07 s at rest; p<10(-6)", "label": "other"}
+{"id": "27583127-164", "document": "27583127", "start": 164, "end": 166, "inner": "E2", "label": "same"}
+{"id": "27583127-489", "document": "27583127", "start": 489, "end": 494, "inner": "hPSCs", "label": "same"}
+{"id": "27583127-577", "document": "27583127", "start": 577, "end": 581, "inner": "ER-\u03b1", "label": "same"}
+{"id": "27583127-711", "document": "27583127", "start": 711, "end": 724, "inner": "CD34 and CD45", "label": "instance"}
+{"id": "27583127-1103", "document": "27583127", "start": 1103, "end": 1116, "inner": "ER antagonist", "label": "instance"}
+{"id": "27600888-218", "document": "27600888", "start": 218, "end": 221, "inner": "SpA", "label": "same"}
+{"id": "27600888-405", "document": "27600888", "start": 405, "end": 436, "inner": "viral, bacterial, and parasitic", "label": "instance"}
+{"id": "27600888-843", "document": "27600888", "start": 843, "end": 865, "inner": "\u00abclinical decussation\u00bb", "label": "other"}
+{"id": "27600888-1107", "document": "27600888", "start": 1107, "end": 1113, "inner": "p>0.05", "label": "other"}
+{"id": "27600888-1298", "document": "27600888", "start": 1298, "end": 1306, "inner": "p<0.0001", "label": "other"}
+{"id": "27619032-118", "document": "27619032", "start": 118, "end": 121, "inner": "PRS", "label": "same"}
+{"id": "27619032-334", "document": "27619032", "start": 334, "end": 337, "inner": "MDO", "label": "same"}
+{"id": "27619032-556", "document": "27619032", "start": 556, "end": 559, "inner": "AHI", "label": "same"}
+{"id": "27619032-1055", "document": "27619032", "start": 1055, "end": 1097, "inner": "57.7% male; mean age = 4.1 weeks, SD = 5.0", "label": "other"}
+{"id": "27619032-1143", "document": "27619032", "start": 1143, "end": 1146, "inner": "PSG", "label": "same"}
+{"id": "27619032-1327", "document": "27619032", "start": 1327, "end": 1335, "inner": "AHI > 10", "label": "other"}
+{"id": "27619032-1460", "document": "27619032", "start": 1460, "end": 1492, "inner": "30.3 vs. 8.7; t = 4.1, p < 0.001", "label": "other"}
+{"id": "27619032-1515", "document": "27619032", "start": 1515, "end": 1547, "inner": "79.3 vs. 5.8; t = 4.0, p < 0.001", "label": "other"}
+{"id": "27619032-1561", "document": "27619032", "start": 1561, "end": 1594, "inner": "48.1 vs. 22.1; t = 2.2, p = 0.040", "label": "other"}
+{"id": "27619032-1624", "document": "27619032", "start": 1624, "end": 1657, "inner": "3.9% vs. 0.7%; t = 3.3, p = 0.003", "label": "other"}
+{"id": "27619032-1683", "document": "27619032", "start": 1683, "end": 1714, "inner": "75.4% vs. 82.9%; 3.4, p = 0.002", "label": "other"}
+{"id": "27619032-1794", "document": "27619032", "start": 1794, "end": 1826, "inner": "6.3 vs. 1.6; t = 1.99, p = 0.058", "label": "other"}
+{"id": "27620892-211", "document": "27620892", "start": 211, "end": 218, "inner": "SPLUNC1", "label": "same"}
+{"id": "27620892-516", "document": "27620892", "start": 516, "end": 527, "inner": "P. pastoris", "label": "same"}
+{"id": "27620892-716", "document": "27620892", "start": 716, "end": 718, "inner": "MO", "label": "same"}
+{"id": "27620892-1072", "document": "27620892", "start": 1072, "end": 1100, "inner": "accession no. NP_001288334.1", "label": "other"}
+{"id": "27620892-1117", "document": "27620892", "start": 1117, "end": 1145, "inner": "accession no. XP_005688516.1", "label": "other"}
+{"id": "27620892-1170", "document": "27620892", "start": 1170, "end": 1198, "inner": "accession no. XP_005979709.1", "label": "other"}
+{"id": "27620892-1213", "document": "27620892", "start": 1213, "end": 1238, "inner": "accession no. NP_776851.1", "label": "other"}
+{"id": "27620892-1254", "document": "27620892", "start": 1254, "end": 1282, "inner": "accession no. XP_006929910.1", "label": "other"}
+{"id": "27620892-1299", "document": "27620892", "start": 1299, "end": 1327, "inner": "accession no. NP_001230122.1", "label": "other"}
+{"id": "27620892-1342", "document": "27620892", "start": 1342, "end": 1370, "inner": "accession no. NP_001005727.1", "label": "other"}
+{"id": "27620892-1394", "document": "27620892", "start": 1394, "end": 1422, "inner": "accession no. NP_001269294.1", "label": "other"}
+{"id": "27620892-1439", "document": "27620892", "start": 1439, "end": 1464, "inner": "accession no. NP_035256.2", "label": "other"}
+{"id": "27620892-1490", "document": "27620892", "start": 1490, "end": 1515, "inner": "accession no. NP_742028.1", "label": "other"}
+{"id": "27620892-1909", "document": "27620892", "start": 1909, "end": 1915, "inner": "p<0.01", "label": "other"}
+{"id": "27626099-344", "document": "27626099", "start": 344, "end": 350, "inner": "eIF4G1", "label": "same"}
+{"id": "27635325-103", "document": "27635325", "start": 103, "end": 114, "inner": "Danio rerio", "label": "same"}
+{"id": "27635325-601", "document": "27635325", "start": 601, "end": 608, "inner": "control", "label": "other"}
+{"id": "27643784-170", "document": "27643784", "start": 170, "end": 173, "inner": "DDE", "label": "same"}
+{"id": "27643784-304", "document": "27643784", "start": 304, "end": 320, "inner": "12(th)/13(th) c.", "label": "other"}
+{"id": "27643784-359", "document": "27643784", "start": 359, "end": 375, "inner": "15(th)/16(th) c.", "label": "other"}
+{"id": "27643784-489", "document": "27643784", "start": 489, "end": 492, "inner": "MIH", "label": "same"}
+{"id": "27643784-590", "document": "27643784", "start": 590, "end": 594, "inner": "EAPD", "label": "same"}
+{"id": "27643784-649", "document": "27643784", "start": 649, "end": 693, "inner": "single burials 90.3% and group burials 88.6%", "label": "other"}
+{"id": "27643784-790", "document": "27643784", "start": 790, "end": 793, "inner": "LEH", "label": "same"}
+{"id": "27692319-723", "document": "27692319", "start": 723, "end": 725, "inner": "CE", "label": "same"}
+{"id": "27692319-894", "document": "27692319", "start": 894, "end": 898, "inner": "HPLC", "label": "same"}
+{"id": "27729000-73", "document": "27729000", "start": 73, "end": 75, "inner": "II", "label": "other"}
+{"id": "27729000-133", "document": "27729000", "start": 133, "end": 137, "inner": "CQDs", "label": "same"}
+{"id": "27738051-1153", "document": "27738051", "start": 1153, "end": 1173, "inner": "13.8% vs 9.5%; P =04", "label": "other"}
+{"id": "27738051-1336", "document": "27738051", "start": 1336, "end": 1357, "inner": "29% vs 18%; P < .0001", "label": "other"}
+{"id": "27744641-290", "document": "27744641", "start": 290, "end": 294, "inner": "5-HT", "label": "same"}
+{"id": "27744641-344", "document": "27744641", "start": 344, "end": 347, "inner": "CeA", "label": "same"}
+{"id": "27744641-461", "document": "27744641", "start": 461, "end": 464, "inner": "CRF", "label": "same"}
+{"id": "27744641-505", "document": "27744641", "start": 505, "end": 509, "inner": "GABA", "label": "same"}
+{"id": "27744641-550", "document": "27744641", "start": 550, "end": 553, "inner": "DRN", "label": "same"}
+{"id": "27747996-753", "document": "27747996", "start": 753, "end": 755, "inner": "TD", "label": "same"}
+{"id": "27747996-941", "document": "27747996", "start": 941, "end": 1021, "inner": "aperture size at which a participant first rotates the shoulders to pass through", "label": "other"}
+{"id": "27749441-353", "document": "27749441", "start": 353, "end": 356, "inner": "SPF", "label": "same"}
+{"id": "27749441-498", "document": "27749441", "start": 498, "end": 504, "inner": "SPF 30", "label": "instance"}
+{"id": "27749441-963", "document": "27749441", "start": 963, "end": 999, "inner": "40% to 52% improvement from baseline", "label": "other"}
+{"id": "27777558-27", "document": "27777558", "start": 27, "end": 31, "inner": "PrAN", "label": "same"}
+{"id": "27777558-112", "document": "27777558", "start": 112, "end": 115, "inner": "ERP", "label": "same"}
+{"id": "27777558-364", "document": "27777558", "start": 364, "end": 368, "inner": "WIFs", "label": "same"}
+{"id": "27802570-263", "document": "27802570", "start": 263, "end": 293, "inner": "Actinida deliciosa var. Qinmei", "label": "same"}
+{"id": "27802570-324", "document": "27802570", "start": 324, "end": 326, "inner": "C1", "label": "other"}
+{"id": "27802570-340", "document": "27802570", "start": 340, "end": 342, "inner": "C2", "label": "other"}
+{"id": "27802570-367", "document": "27802570", "start": 367, "end": 373, "inner": "5 \u03bcL/L", "label": "other"}
+{"id": "27802570-439", "document": "27802570", "start": 439, "end": 442, "inner": "EOs", "label": "same"}
+{"id": "27802570-821", "document": "27802570", "start": 821, "end": 836, "inner": "malondialdehyde", "label": "same"}
+{"id": "27802570-846", "document": "27802570", "start": 846, "end": 863, "inner": "hydrogen peroxide", "label": "same"}
+{"id": "27802570-881", "document": "27802570", "start": 881, "end": 897, "inner": "superoxide anion", "label": "same"}
+{"id": "27811711-67", "document": "27811711", "start": 67, "end": 87, "inner": "Araneae: Gnaphosidae", "label": "other"}
+{"id": "27811711-718", "document": "27811711", "start": 718, "end": 723, "inner": "Simon", "label": "other"}
+{"id": "27811711-970", "document": "27811711", "start": 970, "end": 982, "inner": "Mello-Leit\u00e3o", "label": "other"}
+{"id": "27816023-691", "document": "27816023", "start": 691, "end": 695, "inner": "n=70", "label": "other"}
+{"id": "27816023-1074", "document": "27816023", "start": 1074, "end": 1081, "inner": "ES=0.83", "label": "other"}
+{"id": "27816023-1153", "document": "27816023", "start": 1153, "end": 1160, "inner": "ES=0.63", "label": "other"}
+{"id": "27816023-1232", "document": "27816023", "start": 1232, "end": 1257, "inner": "ranging from ES=0.67-0.93", "label": "other"}
+{"id": "27820159-655", "document": "27820159", "start": 655, "end": 658, "inner": "IQR", "label": "other"}
+{"id": "27861771-176", "document": "27861771", "start": 176, "end": 178, "inner": "FH", "label": "same"}
+{"id": "27861771-329", "document": "27861771", "start": 329, "end": 332, "inner": "HDL", "label": "same"}
+{"id": "27861771-370", "document": "27861771", "start": 370, "end": 373, "inner": "S1P", "label": "same"}
+{"id": "27861771-384", "document": "27861771", "start": 384, "end": 393, "inner": "HDL - S1P", "label": "other"}
+{"id": "27870908-140", "document": "27870908", "start": 140, "end": 143, "inner": "PEW", "label": "same"}
+{"id": "27870908-172", "document": "27870908", "start": 172, "end": 174, "inner": "HD", "label": "same"}
+{"id": "27870908-278", "document": "27870908", "start": 278, "end": 287, "inner": "NT-proBNP", "label": "same"}
+{"id": "27870908-477", "document": "27870908", "start": 477, "end": 484, "inner": "n = 238", "label": "other"}
+{"id": "27870908-586", "document": "27870908", "start": 586, "end": 591, "inner": "hsCRP", "label": "same"}
+{"id": "27870908-609", "document": "27870908", "start": 609, "end": 613, "inner": "IL-6", "label": "same"}
+{"id": "27870908-775", "document": "27870908", "start": 775, "end": 779, "inner": "%CGR", "label": "same"}
+{"id": "27870908-800", "document": "27870908", "start": 800, "end": 802, "inner": "CI", "label": "same"}
+{"id": "27870908-824", "document": "27870908", "start": 824, "end": 827, "inner": "LBM", "label": "same"}
+{"id": "27870908-876", "document": "27870908", "start": 876, "end": 879, "inner": "DXA", "label": "same"}
+{"id": "27871906-1152", "document": "27871906", "start": 1152, "end": 1157, "inner": "HMVII", "label": "instance"}
+{"id": "27874071-269", "document": "27874071", "start": 269, "end": 271, "inner": "NO", "label": "same"}
+{"id": "27874071-711", "document": "27874071", "start": 711, "end": 714, "inner": "NOS", "label": "same"}
+{"id": "27909557-281", "document": "27909557", "start": 281, "end": 283, "inner": "PA", "label": "same"}
+{"id": "27909557-743", "document": "27909557", "start": 743, "end": 745, "inner": "OW", "label": "same"}
+{"id": "27909557-766", "document": "27909557", "start": 766, "end": 768, "inner": "NW", "label": "same"}
+{"id": "27909557-1054", "document": "27909557", "start": 1054, "end": 1063, "inner": "P < 0.001", "label": "other"}
+{"id": "27909557-1125", "document": "27909557", "start": 1125, "end": 1133, "inner": "P < 0.05", "label": "other"}
+{"id": "27909557-1147", "document": "27909557", "start": 1147, "end": 1155, "inner": "P < 0.01", "label": "other"}
+{"id": "27909557-1260", "document": "27909557", "start": 1260, "end": 1275, "inner": "P <0.05 in boys", "label": "other"}
+{"id": "27909557-1867", "document": "27909557", "start": 1867, "end": 1883, "inner": "P < 0.01 in boys", "label": "other"}
+{"id": "27913563-709", "document": "27913563", "start": 709, "end": 795, "inner": "General Practice, Medicine, Obstetrics and Gynaecology, Psychiatry, Radiology, Surgery", "label": "other"}
+{"id": "27914462-926", "document": "27914462", "start": 926, "end": 929, "inner": "MHC", "label": "same"}
+{"id": "27914462-1386", "document": "27914462", "start": 1386, "end": 1389, "inner": "CMV", "label": "same"}
+{"id": "27914462-1481", "document": "27914462", "start": 1481, "end": 1484, "inner": "NLV", "label": "instance"}
+{"id": "27940380-696", "document": "27940380", "start": 696, "end": 700, "inner": "aAPC", "label": "same"}
+{"id": "27940380-768", "document": "27940380", "start": 768, "end": 771, "inner": "mAb", "label": "same"}
+{"id": "27965132-113", "document": "27965132", "start": 113, "end": 115, "inner": "FG", "label": "same"}
+{"id": "27965132-646", "document": "27965132", "start": 646, "end": 701, "inner": "low-volume centers [LVCs] or high-volume centers [HVCs]", "label": "other"}
+{"id": "27965132-1181", "document": "27965132", "start": 1181, "end": 1189, "inner": "p = 0.77", "label": "other"}
+{"id": "27965132-1214", "document": "27965132", "start": 1214, "end": 1222, "inner": "p = 0.87", "label": "other"}
+{"id": "27965132-1263", "document": "27965132", "start": 1263, "end": 1271, "inner": "p < 0.01", "label": "other"}
+{"id": "27965132-1298", "document": "27965132", "start": 1298, "end": 1306, "inner": "p = 0.01", "label": "other"}
+{"id": "27965132-1491", "document": "27965132", "start": 1491, "end": 1499, "inner": "p = 0.05", "label": "other"}
+{"id": "27965132-1527", "document": "27965132", "start": 1527, "end": 1535, "inner": "p = 0.04", "label": "other"}
+{"id": "27965563-196", "document": "27965563", "start": 196, "end": 200, "inner": "dACC", "label": "same"}
+{"id": "27965563-232", "document": "27965563", "start": 232, "end": 240, "inner": "Lcaudate", "label": "same"}
+{"id": "27965563-448", "document": "27965563", "start": 448, "end": 450, "inner": "FC", "label": "same"}
+{"id": "27965563-750", "document": "27965563", "start": 750, "end": 754, "inner": "LSTG", "label": "same"}
+{"id": "27965563-799", "document": "27965563", "start": 799, "end": 803, "inner": "LPCG", "label": "same"}
+{"id": "27965563-1233", "document": "27965563", "start": 1233, "end": 1239, "inner": "signed", "label": "other"}
+{"id": "27965563-1370", "document": "27965563", "start": 1370, "end": 1408, "inner": "the region specific to spoken language", "label": "other"}
+{"id": "27991454-121", "document": "27991454", "start": 121, "end": 125, "inner": "IMRT", "label": "same"}
+{"id": "27991454-1206", "document": "27991454", "start": 1206, "end": 1209, "inner": "H&N", "label": "same"}
+{"id": "27991454-1833", "document": "27991454", "start": 1833, "end": 1878, "inner": "up to [Formula: see text] with bony alignment", "label": "other"}
+{"id": "27991454-1908", "document": "27991454", "start": 1908, "end": 1911, "inner": "CTV", "label": "same"}
+{"id": "27991454-1946", "document": "27991454", "start": 1946, "end": 1963, "inner": "compared to 95.1%", "label": "other"}
+{"id": "27991454-2034", "document": "27991454", "start": 2034, "end": 2051, "inner": "compared to 88.5%", "label": "other"}
+{"id": "27991454-2118", "document": "27991454", "start": 2118, "end": 2135, "inner": "compared to 56.1%", "label": "other"}
+{"id": "28011059-605", "document": "28011059", "start": 605, "end": 661, "inner": "18 nonasthmatic and 18 asthmatic subjects by age 9 years", "label": "other"}
+{"id": "28011059-693", "document": "28011059", "start": 693, "end": 696, "inner": "IIS", "label": "same"}
+{"id": "28011059-795", "document": "28011059", "start": 795, "end": 801, "inner": "n = 60", "label": "other"}
+{"id": "28011059-833", "document": "28011059", "start": 833, "end": 932, "inner": "the Manchester Asthma and Allergy Study [n = 30] and the Childhood Origins of Asthma Study [n = 28]", "label": "other"}
+{"id": "28013205-175", "document": "28013205", "start": 175, "end": 177, "inner": "FI", "label": "same"}
+{"id": "28013205-489", "document": "28013205", "start": 489, "end": 509, "inner": "an FI severity scale", "label": "other"}
+{"id": "28013205-533", "document": "28013205", "start": 533, "end": 568, "inner": "a visual scale of stool consistency", "label": "other"}
+{"id": "28013205-1041", "document": "28013205", "start": 1041, "end": 1045, "inner": "SIBO", "label": "same"}
+{"id": "28013205-1138", "document": "28013205", "start": 1138, "end": 1140, "inner": "OR", "label": "other"}
+{"id": "28013205-1187", "document": "28013205", "start": 1187, "end": 1227, "inner": "OR = 3.64, 95% CI: 1.61, 8.27, P = 0.002", "label": "other"}
+{"id": "28013205-1247", "document": "28013205", "start": 1247, "end": 1276, "inner": "OR = 2.97, 95% CI: 1.06, 8.27", "label": "other"}
+{"id": "28013205-1304", "document": "28013205", "start": 1304, "end": 1333, "inner": "OR = 2.45, 95% CI: 1.14, 5.27", "label": "other"}
+{"id": "28013205-1438", "document": "28013205", "start": 1438, "end": 1499, "inner": "correlation coefficients between -0.602 and -0.702, P < 0.001", "label": "other"}
+{"id": "28058834-422", "document": "28058834", "start": 422, "end": 425, "inner": "low", "label": "other"}
+{"id": "28058834-447", "document": "28058834", "start": 447, "end": 453, "inner": "pHLIPs", "label": "same"}
+{"id": "28058834-707", "document": "28058834", "start": 707, "end": 711, "inner": "GNSs", "label": "same"}
+{"id": "28058834-726", "document": "28058834", "start": 726, "end": 737, "inner": "GNS - pHLIP", "label": "other"}
+{"id": "28058834-804", "document": "28058834", "start": 804, "end": 807, "inner": "PTT", "label": "same"}
+{"id": "28058834-1358", "document": "28058834", "start": 1358, "end": 1360, "inner": "CT", "label": "same"}
+{"id": "28058834-1381", "document": "28058834", "start": 1381, "end": 1383, "inner": "PA", "label": "same"}
+{"id": "28072668-248", "document": "28072668", "start": 248, "end": 250, "inner": "NG", "label": "same"}
+{"id": "28072668-279", "document": "28072668", "start": 279, "end": 281, "inner": "CT", "label": "same"}
+{"id": "28087131-213", "document": "28087131", "start": 213, "end": 215, "inner": "RC", "label": "same"}
+{"id": "28087131-240", "document": "28087131", "start": 240, "end": 243, "inner": "BCa", "label": "same"}
+{"id": "28087131-676", "document": "28087131", "start": 676, "end": 679, "inner": "CSM", "label": "same"}
+{"id": "28087131-705", "document": "28087131", "start": 705, "end": 707, "inner": "OM", "label": "same"}
+{"id": "28087131-1342", "document": "28087131", "start": 1342, "end": 1375, "inner": "hazard ratio [HR] = 3.47, P<0.001", "label": "other"}
+{"id": "28087131-1383", "document": "28087131", "start": 1383, "end": 1400, "inner": "HR = 3.30, P<0.04", "label": "other"}
+{"id": "28087131-1411", "document": "28087131", "start": 1411, "end": 1429, "inner": "HR = 2.97, P<0.003", "label": "other"}
+{"id": "28087131-1563", "document": "28087131", "start": 1563, "end": 1573, "inner": "all P> 0.1", "label": "other"}
+{"id": "28088045-220", "document": "28088045", "start": 220, "end": 223, "inner": "HLB", "label": "same"}
+{"id": "28088045-468", "document": "28088045", "start": 468, "end": 479, "inner": "UHPLC-MS/MS", "label": "same"}
+{"id": "28088045-853", "document": "28088045", "start": 853, "end": 856, "inner": "LOD", "label": "same"}
+{"id": "28093699-122", "document": "28093699", "start": 122, "end": 126, "inner": "AChE", "label": "same"}
+{"id": "28093699-152", "document": "28093699", "start": 152, "end": 156, "inner": "BChE", "label": "same"}
+{"id": "28093699-215", "document": "28093699", "start": 215, "end": 220, "inner": "BACE1", "label": "same"}
+{"id": "28093699-296", "document": "28093699", "start": 296, "end": 298, "inner": "AD", "label": "same"}
+{"id": "28102322-211", "document": "28102322", "start": 211, "end": 217, "inner": "cffDNA", "label": "same"}
+{"id": "28102322-530", "document": "28102322", "start": 530, "end": 551, "inner": "overall amplification", "label": "other"}
+{"id": "28102322-714", "document": "28102322", "start": 714, "end": 745, "inner": "selective overall amplification", "label": "other"}
+{"id": "28104084-858", "document": "28104084", "start": 858, "end": 917, "inner": "control condition, sternocleidomastoid stimulation: \" SCM \"", "label": "other"}
+{"id": "28104084-987", "document": "28104084", "start": 987, "end": 1057, "inner": "experimental condition, non-invasive vagus nerve stimulation: \" nVNS \"", "label": "other"}
+{"id": "28104084-1099", "document": "28104084", "start": 1099, "end": 1145, "inner": "whole-brain and brainstem; corrected, p < 0.01", "label": "other"}
+{"id": "28104084-1309", "document": "28104084", "start": 1309, "end": 1312, "inner": "SCM", "label": "other"}
+{"id": "28104084-1424", "document": "28104084", "start": 1424, "end": 1464, "inner": "primary central relay of vagal afferents", "label": "other"}
+{"id": "28120334-378", "document": "28120334", "start": 378, "end": 412, "inner": "Los Angeles, Orange, and San Diego", "label": "other"}
+{"id": "28120334-694", "document": "28120334", "start": 694, "end": 699, "inner": "brand", "label": "other"}
+{"id": "28120334-768", "document": "28120334", "start": 768, "end": 789, "inner": "Cortisporin - generic", "label": "other"}
+{"id": "28120334-817", "document": "28120334", "start": 817, "end": 824, "inner": "generic", "label": "other"}
+{"id": "28120334-990", "document": "28120334", "start": 990, "end": 1005, "inner": "Vosol - generic", "label": "other"}
+{"id": "28120334-1085", "document": "28120334", "start": 1085, "end": 1103, "inner": "Domeboro - generic", "label": "other"}
+{"id": "28125165-209", "document": "28125165", "start": 209, "end": 212, "inner": "CDK", "label": "same"}
+{"id": "28125165-735", "document": "28125165", "start": 735, "end": 737, "inner": "MD", "label": "same"}
+{"id": "28125165-923", "document": "28125165", "start": 923, "end": 926, "inner": "ITC", "label": "same"}
+{"id": "28186107-400", "document": "28186107", "start": 400, "end": 412, "inner": "e.g. fasting", "label": "other"}
+{"id": "28186107-812", "document": "28186107", "start": 812, "end": 815, "inner": "HPA", "label": "same"}
+{"id": "28186107-875", "document": "28186107", "start": 875, "end": 879, "inner": "ACTH", "label": "same"}
+{"id": "28186107-1326", "document": "28186107", "start": 1326, "end": 1343, "inner": "lasting <24 hours", "label": "other"}
+{"id": "28187742-342", "document": "28187742", "start": 342, "end": 348, "inner": "cPLA2\u03b1", "label": "same"}
+{"id": "28187742-725", "document": "28187742", "start": 725, "end": 728, "inner": "LPS", "label": "same"}
+{"id": "28187742-751", "document": "28187742", "start": 751, "end": 755, "inner": "IFN\u03b3", "label": "same"}
+{"id": "28187742-1036", "document": "28187742", "start": 1036, "end": 1038, "inner": "AS", "label": "same"}
+{"id": "28187742-1306", "document": "28187742", "start": 1306, "end": 1309, "inner": "4 h", "label": "other"}
+{"id": "28187742-1952", "document": "28187742", "start": 1952, "end": 2005, "inner": "detected by phospho-serine727 and phoshpo-tyrosine701", "label": "other"}
+{"id": "28223077-207", "document": "28223077", "start": 207, "end": 210, "inner": "MSW", "label": "same"}
+{"id": "28223077-735", "document": "28223077", "start": 735, "end": 746, "inner": "\u2211 PCDD / Fs", "label": "same"}
+{"id": "28223077-957", "document": "28223077", "start": 957, "end": 960, "inner": "TEQ", "label": "same"}
+{"id": "28223077-1573", "document": "28223077", "start": 1573, "end": 1575, "inner": "CR", "label": "same"}
+{"id": "28223077-1979", "document": "28223077", "start": 1979, "end": 1985, "inner": "non-CR", "label": "same"}
+{"id": "28251086-194", "document": "28251086", "start": 194, "end": 199, "inner": "N / L", "label": "same"}
+{"id": "28251086-239", "document": "28251086", "start": 239, "end": 244, "inner": "P / L", "label": "same"}
+{"id": "28251086-298", "document": "28251086", "start": 298, "end": 301, "inner": "AAU", "label": "same"}
+{"id": "28251086-671", "document": "28251086", "start": 671, "end": 687, "inner": "P=0.006, P=0.022", "label": "other"}
+{"id": "28251086-780", "document": "28251086", "start": 780, "end": 783, "inner": "CRP", "label": "same"}
+{"id": "28251086-796", "document": "28251086", "start": 796, "end": 812, "inner": "P=0.002; r=0.461", "label": "other"}
+{"id": "28267199-170", "document": "28267199", "start": 170, "end": 178, "inner": "non-BCSD", "label": "same"}
+{"id": "28267199-364", "document": "28267199", "start": 364, "end": 375, "inner": "n = 199,963", "label": "other"}
+{"id": "28267199-477", "document": "28267199", "start": 477, "end": 481, "inner": "BCSD", "label": "same"}
+{"id": "28267199-873", "document": "28267199", "start": 873, "end": 875, "inner": "OS", "label": "same"}
+{"id": "28267199-1086", "document": "28267199", "start": 1086, "end": 1095, "inner": ">62 years", "label": "other"}
+{"id": "28267199-1242", "document": "28267199", "start": 1242, "end": 1246, "inner": "HoR+", "label": "same"}
+{"id": "28289872-200", "document": "28289872", "start": 200, "end": 203, "inner": "pSS", "label": "same"}
+{"id": "28289872-949", "document": "28289872", "start": 949, "end": 953, "inner": "AECG", "label": "same"}
+{"id": "28289872-993", "document": "28289872", "start": 993, "end": 996, "inner": "ACR", "label": "same"}
+{"id": "28289872-1068", "document": "28289872", "start": 1068, "end": 1080, "inner": "F/M was 20/1", "label": "other"}
+{"id": "28289872-1185", "document": "28289872", "start": 1185, "end": 1213, "inner": "2.5 \u00b1 2.3 vs 4.3 \u00b1 5.9 years", "label": "other"}
+{"id": "28289872-1216", "document": "28289872", "start": 1216, "end": 1229, "inner": "p = 0 < 0.016", "label": "other"}
+{"id": "28332137-277", "document": "28332137", "start": 277, "end": 280, "inner": "CPB", "label": "same"}
+{"id": "28332137-322", "document": "28332137", "start": 322, "end": 325, "inner": "RBC", "label": "same"}
+{"id": "28332137-445", "document": "28332137", "start": 445, "end": 449, "inner": "CABG", "label": "same"}
+{"id": "28332137-681", "document": "28332137", "start": 681, "end": 696, "inner": "group I, n = 35", "label": "other"}
+{"id": "28332137-734", "document": "28332137", "start": 734, "end": 750, "inner": "group II, n = 35", "label": "other"}
+{"id": "28332137-884", "document": "28332137", "start": 884, "end": 887, "inner": "IMA", "label": "same"}
+{"id": "28332137-957", "document": "28332137", "start": 957, "end": 961, "inner": "AOPP", "label": "same"}
+{"id": "28332137-977", "document": "28332137", "start": 977, "end": 981, "inner": "T-SH", "label": "same"}
+{"id": "28332137-1029", "document": "28332137", "start": 1029, "end": 1033, "inner": "NGAL", "label": "same"}
+{"id": "28332137-1077", "document": "28332137", "start": 1077, "end": 1081, "inner": "eGFR", "label": "same"}
+{"id": "28332137-1248", "document": "28332137", "start": 1248, "end": 1256, "inner": "p < 0.05", "label": "other"}
+{"id": "28334564-564", "document": "28334564", "start": 564, "end": 570, "inner": "CVSICU", "label": "same"}
+{"id": "28361288-387", "document": "28361288", "start": 387, "end": 388, "inner": "U", "label": "other"}
+{"id": "28361288-468", "document": "28361288", "start": 468, "end": 472, "inner": "HACS", "label": "same"}
+{"id": "28361288-517", "document": "28361288", "start": 517, "end": 521, "inner": "RdRp", "label": "same"}
+{"id": "28382143-224", "document": "28382143", "start": 224, "end": 228, "inner": "AAPR", "label": "same"}
+{"id": "28382143-363", "document": "28382143", "start": 363, "end": 366, "inner": "NPC", "label": "same"}
+{"id": "28382143-867", "document": "28382143", "start": 867, "end": 869, "inner": "OS", "label": "same"}
+{"id": "28382143-1008", "document": "28382143", "start": 1008, "end": 1011, "inner": "LDH", "label": "same"}
+{"id": "28382143-1020", "document": "28382143", "start": 1020, "end": 1046, "inner": "273 vs. 185 U/L, P = 0.004", "label": "other"}
+{"id": "28382143-1078", "document": "28382143", "start": 1078, "end": 1124, "inner": "5.59\u00d710(5) vs. 3.49\u00d710(4) copies/ml, P = 0.001", "label": "other"}
+{"id": "28382143-1163", "document": "28382143", "start": 1163, "end": 1200, "inner": "P = 0.005 and P = 0.001, respectively", "label": "other"}
+{"id": "28382143-1309", "document": "28382143", "start": 1309, "end": 1429, "inner": "hazard ratio: 3.269, 95% confidence interval: 1.710-6.248; HR: 2.295, 95% confidence interval: 1.217-4.331, respectively", "label": "other"}
+{"id": "28387168-353", "document": "28387168", "start": 353, "end": 356, "inner": "RBC", "label": "same"}
+{"id": "28391771-125", "document": "28391771", "start": 125, "end": 128, "inner": "BoC", "label": "same"}
+{"id": "28391771-188", "document": "28391771", "start": 188, "end": 191, "inner": "TBI", "label": "same"}
+{"id": "28391771-585", "document": "28391771", "start": 585, "end": 637, "inner": "9 individuals with TBI, 9 close others, 7 clinicians", "label": "other"}
+{"id": "28396298-72", "document": "28396298", "start": 72, "end": 77, "inner": "TGF-\u03b2", "label": "same"}
+{"id": "28396298-453", "document": "28396298", "start": 453, "end": 457, "inner": "SNPs", "label": "same"}
+{"id": "28396298-546", "document": "28396298", "start": 546, "end": 639, "inner": "rs2317130, rs11466313, rs1800468, rs1800469, rs11466314, rs1800471, rs1800470, and rs11466316", "label": "instance"}
+{"id": "28396298-880", "document": "28396298", "start": 880, "end": 946, "inner": "i.e., cancers, cardiac diseases, inflammatory diseases, and others", "label": "other"}
+{"id": "28438542-71", "document": "28438542", "start": 71, "end": 75, "inner": "ALR2", "label": "same"}
+{"id": "28438542-111", "document": "28438542", "start": 111, "end": 117, "inner": "PARP-1", "label": "instance"}
+{"id": "28438542-573", "document": "28438542", "start": 573, "end": 576, "inner": "TZD", "label": "same"}
+{"id": "28438542-888", "document": "28438542", "start": 888, "end": 904, "inner": "IC50 1.34-5.03\u03bcM", "label": "other"}
+{"id": "28448089-94", "document": "28448089", "start": 94, "end": 99, "inner": "SMP30", "label": "same"}
+{"id": "28448089-202", "document": "28448089", "start": 202, "end": 205, "inner": "GNL", "label": "same"}
+{"id": "28448089-312", "document": "28448089", "start": 312, "end": 314, "inner": "KO", "label": "same"}
+{"id": "28448089-489", "document": "28448089", "start": 489, "end": 492, "inner": "BMC", "label": "same"}
+{"id": "28448089-515", "document": "28448089", "start": 515, "end": 518, "inner": "BMD", "label": "same"}
+{"id": "28448873-171", "document": "28448873", "start": 171, "end": 173, "inner": "L.", "label": "other"}
+{"id": "28448873-411", "document": "28448873", "start": 411, "end": 413, "inner": "OA", "label": "same"}
+{"id": "28448873-616", "document": "28448873", "start": 616, "end": 623, "inner": "3-100\u03bcM", "label": "other"}
+{"id": "28464953-410", "document": "28464953", "start": 410, "end": 412, "inner": "IR", "label": "same"}
+{"id": "28464953-600", "document": "28464953", "start": 600, "end": 606, "inner": "hPDSCs", "label": "same"}
+{"id": "28464953-1072", "document": "28464953", "start": 1072, "end": 1080, "inner": "P < 0.01", "label": "other"}
+{"id": "28465793-558", "document": "28465793", "start": 558, "end": 559, "inner": "K", "label": "same"}
+{"id": "28465793-574", "document": "28465793", "start": 574, "end": 575, "inner": "M", "label": "same"}
+{"id": "28465793-588", "document": "28465793", "start": 588, "end": 589, "inner": "A", "label": "same"}
+{"id": "28465793-606", "document": "28465793", "start": 606, "end": 607, "inner": "P", "label": "same"}
+{"id": "28465793-660", "document": "28465793", "start": 660, "end": 661, "inner": "O", "label": "same"}
+{"id": "28471040-167", "document": "28471040", "start": 167, "end": 170, "inner": "PEG", "label": "same"}
+{"id": "28471040-334", "document": "28471040", "start": 334, "end": 337, "inner": "FTA", "label": "same"}
+{"id": "28471040-520", "document": "28471040", "start": 520, "end": 533, "inner": "PLGA-DSPE-PEG", "label": "same"}
+{"id": "28471040-593", "document": "28471040", "start": 593, "end": 598, "inner": "DOTAP", "label": "same"}
+{"id": "28471040-766", "document": "28471040", "start": 766, "end": 769, "inner": "RG2", "label": "same"}
+{"id": "28471040-811", "document": "28471040", "start": 811, "end": 859, "inner": "in comparison with non-malignant cell line, L929", "label": "other"}
+{"id": "28471040-1251", "document": "28471040", "start": 1251, "end": 1283, "inner": "49 female Wistar rats, 250-300 g", "label": "other"}
+{"id": "28476169-566", "document": "28476169", "start": 566, "end": 572, "inner": "I Ca-L", "label": "same"}
+{"id": "28476169-612", "document": "28476169", "start": 612, "end": 615, "inner": "I K", "label": "same"}
+{"id": "28476169-655", "document": "28476169", "start": 655, "end": 659, "inner": "I to", "label": "same"}
+{"id": "28476169-701", "document": "28476169", "start": 701, "end": 705, "inner": "I K1", "label": "same"}
+{"id": "28476169-832", "document": "28476169", "start": 832, "end": 844, "inner": "APD50, APD90", "label": "same"}
+{"id": "28478464-209", "document": "28478464", "start": 209, "end": 213, "inner": "RNFL", "label": "same"}
+{"id": "28478464-624", "document": "28478464", "start": 624, "end": 630, "inner": "TD-OCT", "label": "same"}
+{"id": "28478464-900", "document": "28478464", "start": 900, "end": 904, "inner": "AROC", "label": "same"}
+{"id": "28478464-1204", "document": "28478464", "start": 1204, "end": 1219, "inner": "pless than 0.05", "label": "other"}
+{"id": "28478464-1246", "document": "28478464", "start": 1246, "end": 1248, "inner": "FT", "label": "same"}
+{"id": "28478464-1267", "document": "28478464", "start": 1267, "end": 1269, "inner": "NI", "label": "same"}
+{"id": "28478464-1311", "document": "28478464", "start": 1311, "end": 1313, "inner": "TO", "label": "same"}
+{"id": "28478464-1505", "document": "28478464", "start": 1505, "end": 1521, "inner": "pless than 0.001", "label": "other"}
+{"id": "28514301-104", "document": "28514301", "start": 104, "end": 107, "inner": "NPC", "label": "same"}
+{"id": "28523528-230", "document": "28523528", "start": 230, "end": 232, "inner": "CS", "label": "same"}
+{"id": "28523528-520", "document": "28523528", "start": 520, "end": 527, "inner": "Group A", "label": "other"}
+{"id": "28523528-565", "document": "28523528", "start": 565, "end": 572, "inner": "Group B", "label": "other"}
+{"id": "28523528-675", "document": "28523528", "start": 675, "end": 679, "inner": "UDVA", "label": "same"}
+{"id": "28523528-718", "document": "28523528", "start": 718, "end": 722, "inner": "UIVA", "label": "same"}
+{"id": "28523528-753", "document": "28523528", "start": 753, "end": 757, "inner": "UNVA", "label": "same"}
+{"id": "28523528-971", "document": "28523528", "start": 971, "end": 978, "inner": "p = .39", "label": "other"}
+{"id": "28523528-1038", "document": "28523528", "start": 1038, "end": 1054, "inner": "p = .00, p = .00", "label": "other"}
+{"id": "28523528-1317", "document": "28523528", "start": 1317, "end": 1342, "inner": "p = .57, p = .62, p = .22", "label": "other"}
