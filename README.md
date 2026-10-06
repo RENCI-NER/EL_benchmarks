@@ -9,6 +9,7 @@ Benchmarks hold the source's own identifiers. Deciding whether a linker's output
 | Directory | What it is | Status |
 |---|---|---|
 | [`medmentions_assessed/`](medmentions_assessed/) | MedMentions mentions whose proposed links (from MedMentions, gpt-oss, o3-mini) were judged by two people in bagel-eval, plus adjudication of their disagreements | built: 1,489 mentions, 2,006 judgments |
+| [`abbreviations/`](abbreviations/) | Parentheticals in 100 held-out MedMentions abstracts, labeled by whether they define an abbreviation for the same thing as the phrase (same / instance / other); for a linker's abbreviation step | items built: 424; labeling in progress |
 | [`craft/`](craft/) | CRAFT core concept annotations (CHEBI, CL, GO, NCBITaxon, UBERON, MONDO), one item per distinct article mention, sampled | built: 1,000 items |
 
 ```bash
