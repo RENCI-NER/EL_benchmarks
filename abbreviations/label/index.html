@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Label parentheticals</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root { --bg: #fafaf8; --fg: #1d1d1b; --muted: #6b6b66; --line: #e2e1dc; --hl: #ffe08a; --card: #fff;
+          --bad: #b3261e; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #161615; --fg: #ecebe6; --muted: #9a9993; --line: #34332f; --hl: #6b5510; --card: #1f1f1d;
+            --bad: #f2887f; }
+  }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.5 system-ui, sans-serif; }
+  main { max-width: 900px; margin: 0 auto; padding: 16px; }
+  header { display: flex; justify-content: space-between; align-items: baseline; color: var(--muted); font-size: 14px; }
+  .focus { font-size: 24px; margin: 18px 0 14px; }
+  .focus .before { color: var(--muted); }
+  .focus .inner { font-weight: 700; }
+  .abstract { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px;
+              max-height: 50vh; overflow: auto; }
+  mark { background: var(--hl); color: inherit; border-radius: 3px; padding: 0 2px; }
+  .keys { margin-top: 14px; color: var(--muted); font-size: 14px; line-height: 2; }
+  kbd { border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 4px; padding: 0 5px; font-size: 13px; }
+  .done { font-size: 22px; margin-top: 40px; }
+  .flash { color: var(--bad); }
+</style>
+</head>
+<body>
+<main>
+  <header><span id="progress"></span><span id="status"></span></header>
+  <div id="view"></div>
+  <div class="keys">
+    <kbd>s</kbd> same thing (an abbreviation or symbol for the phrase) ·
+    <kbd>i</kbd> instance (an example, member, level, strain or specific gene) ·
+    <kbd>o</kbd> other ·
+    <kbd>u</kbd> skip · <kbd>z</kbd> undo
+  </div>
+</main>
+<script>
+let item = null, busy = false;  // busy: ignore keys until the next item is shown
+const esc = s => (s || "").replace(/[&<>"]/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"}[c]));
+
+function render(data) {
+  item = data.item;
+  const p = data.progress;
+  document.getElementById("progress").textContent = `${p.labeled} / ${p.total} labeled · same ${p.same} · ` +
+    `instance ${p.instance} · other ${p.other}` + (p.skipped ? ` · ${p.skipped} skipped` : "");
+  const view = document.getElementById("view");
+  if (!item) {
+    view.innerHTML = `<div class="done">All done.` + (p.skipped ? ` <a href="#" id="skips">Review ${p.skipped} skipped</a>` : "") + `</div>`;
+    const s = document.getElementById("skips");
+    if (s) s.onclick = e => { e.preventDefault(); load("/api/next?skips=1"); };
+    return;
+  }
+  const t = item.text, open = t.lastIndexOf("(", item.start), close = t.indexOf(")", item.end);
+  const before = t.slice(Math.max(0, open - 70), open);
+  view.innerHTML = `
+    <div class="focus"><span class="before">…${esc(before)}</span>(<span class="inner">${esc(item.inner)}</span>)</div>
+    <div class="abstract">${esc(t.slice(0, open))}<mark>${esc(t.slice(open, close + 1))}</mark>${esc(t.slice(close + 1))}</div>`;
+  document.querySelector(".abstract mark").scrollIntoView({block: "center"});
+}
+
+async function load(url, body) {
+  if (busy) return;
+  busy = true;
+  try {
+    const r = await fetch(url, body ? {method: "POST", headers: {"Content-Type": "application/json"},
+                                          body: JSON.stringify(body)} : {});
+    const data = await r.json();
+    if (data.error) { document.getElementById("status").innerHTML = `<span class="flash">${esc(data.error)}</span>`; return; }
+    document.getElementById("status").textContent = "";
+    render(data);
+  } finally { busy = false; }
+}
+
+const KEYS = {s: "same", i: "instance", o: "other", u: "skip"};
+document.addEventListener("keydown", e => {
+  if (e.metaKey || e.ctrlKey || e.altKey) return;
+  const k = e.key.toLowerCase();
+  if (k === "z") return load("/api/undo", {});
+  if (item && KEYS[k]) return load("/api/label", {item: item.id, label: KEYS[k]});
+});
+
+load("/api/next");
+</script>
+</body>
+</html>

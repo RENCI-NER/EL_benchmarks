@@ -42,3 +42,19 @@ def test_adjudication_log_replay(tmp_path):
     assert decisions["1"]["verdicts"] == {"A:1": "incorrect"}
     assert decisions["2"] == {"mention_id": "2", "skipped": True}
     assert "3" not in decisions
+
+
+def test_scope_reasons_are_types_or_listed_concepts():
+    assert "biolink:InformationContentEntity" in build.OUT_OF_SCOPE_TYPES
+    assert all(c.startswith("UMLS:") for c in build.OUT_OF_SCOPE_CONCEPTS)
+
+
+def test_truth_holds_only_source_identifiers():
+    """The built benchmark must not carry Babel-derived identifiers or dates."""
+    truth = build.TRUTH
+    if not truth.exists():
+        return
+    for line in truth.read_text().splitlines()[:200]:
+        record = json.loads(line)
+        assert "nodenorm_date" not in record
+        assert all(set(j) == {"curie", "label", "type", "verdict", "basis", "proposed_by"} for j in record["judgments"])

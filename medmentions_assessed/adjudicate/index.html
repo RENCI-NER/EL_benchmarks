@@ -26,6 +26,8 @@
   .term .label { font-size: 19px; font-weight: 600; }
   .term .meta { color: var(--muted); font-size: 14px; }
   .term .desc { font-size: 14px; margin-top: 4px; }
+  .term .links { font-size: 14px; margin-top: 4px; }
+  .term .links a { color: var(--sel); margin-right: 12px; }
   .keys { margin-top: 14px; color: var(--muted); font-size: 14px; }
   kbd { border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 4px; padding: 0 5px; font-size: 13px; }
   .done { font-size: 22px; margin-top: 40px; }
@@ -40,6 +42,33 @@
 </main>
 <script>
 let item = null, selected = new Set(), busy = false;  // busy: ignore keys until the next item is shown
+
+// Where to look a term up, by CURIE prefix: [label, url(localId, curie)]; OBO ontologies go to OLS.
+const OBO = ["MONDO", "UBERON", "GO", "CHEBI", "CL", "HP", "EFO", "PR", "SO", "MP", "NBO"];
+const LINKS = {
+  "UMLS": [["NCI Metathesaurus", id => `https://ncim.nci.nih.gov/ncimbrowser/ConceptReport.jsp?dictionary=NCI%20Metathesaurus&code=${id}`],
+           ["UTS", id => `https://uts.nlm.nih.gov/uts/umls/concept/${id}`]],
+  "PUBCHEM.COMPOUND": [["PubChem", id => `https://pubchem.ncbi.nlm.nih.gov/compound/${id}`]],
+  "MESH": [["MeSH", id => `https://meshb.nlm.nih.gov/record/ui?ui=${id}`]],
+  "NCBIGene": [["NCBI Gene", id => `https://www.ncbi.nlm.nih.gov/gene/${id}`]],
+  "NCBITaxon": [["NCBI Taxonomy", id => `https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=${id}`]],
+  "NCIT": [["NCI Thesaurus", id => `https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncit/${id}`]],
+  "DRUGBANK": [["DrugBank", id => `https://go.drugbank.com/drugs/${id}`]],
+  "UNII": [["FDA UNII", id => `https://precision.fda.gov/uniisearch/srs/unii/${id}`]],
+  "RXCUI": [["RxNav", id => `https://mor.nlm.nih.gov/RxNav/search?searchBy=RXCUI&searchTerm=${id}`]],
+  "HGNC.FAMILY": [["HGNC group", id => `https://www.genenames.org/data/genegroup/#!/group/${id}`]],
+  "PANTHER.FAMILY": [["PANTHER", id => `https://www.pantherdb.org/panther/family.do?clsAccession=${id}`]],
+};
+function termLinks(t) {
+  const [prefix, ...rest] = t.curie.split(":"); const id = rest.join(":");
+  const source = LINKS[prefix] || (OBO.includes(prefix)
+    ? [["OLS", () => `https://www.ebi.ac.uk/ols4/search?q=${encodeURIComponent(t.curie)}&exact=true`]]
+    : [["Bioregistry", () => `https://bioregistry.io/${encodeURIComponent(t.curie)}`]]);
+  const links = source.map(([label, url]) => [label, url(id, t.curie)]);
+  // every identifier Babel considers equivalent, with labels
+  if (t.display.babel_id) links.push(["Babel", `https://nodenormalization-sri.renci.org/get_normalized_nodes?curie=${encodeURIComponent(t.curie)}&conflate=true&drug_chemical_conflate=true&description=true`]);
+  return links;
+}
 
 const esc = s => (s || "").replace(/[&<>"]/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"}[c]));
 const reEsc = s => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -73,14 +102,17 @@ function render(data) {
     <div class="terms">${item.terms.map((t, i) => `
       <div class="term" id="t${i}">
         ${multi ? `<span class="key">${i + 1}</span>` : ""}
-        <span class="label">${esc(t.label) || "<i>(no label)</i>"}</span>
-        <div class="meta">${esc(t.curie)} · ${esc((t.type || "").replace("biolink:", ""))}</div>
-        ${t.description ? `<div class="desc">${esc(t.description)}</div>` : ""}
+        <span class="label">${esc(t.display.label) || "<i>(no label)</i>"}</span>
+        <div class="meta">${esc(t.curie)} · ${esc((t.display.type || "").replace("biolink:", ""))}</div>
+        ${t.display.description ? `<div class="desc">${esc(t.display.description)}</div>` : ""}
+        <div class="links">${termLinks(t).map(([label, url]) =>
+          `<a href="${esc(url)}" target="_blank" rel="noopener">${esc(label)}</a>`).join("")}${t.display.babel_id ? "" : "<span class=\"meta\">not in Babel</span>"}</div>
       </div>`).join("")}</div>`;
   keys.innerHTML = multi
     ? `<kbd>1</kbd>–<kbd>${item.terms.length}</kbd> only that one · <kbd>b</kbd> all · <kbd>n</kbd> none · ` +
       `<kbd>shift</kbd>+number toggle, <kbd>enter</kbd> submit · <kbd>u</kbd> skip · <kbd>z</kbd> undo`
     : `<kbd>y</kbd> correct · <kbd>n</kbd> wrong · <kbd>u</kbd> skip · <kbd>z</kbd> undo`;
+  keys.innerHTML += ` · <kbd>o</kbd> open ${multi ? "term 1" : "term"} source`;
   document.querySelector(".abstract mark")?.scrollIntoView({block: "center"});
 }
 
@@ -112,6 +144,7 @@ document.addEventListener("keydown", e => {
   if (!multi && k === "y") return decide(curies());
   if (k === "n") return decide([]);
   if (k === "u") return load("/api/skip", {mention_id: item.mention_id});
+  if (k === "o") return void window.open(termLinks(item.terms[0])[0][1], "_blank", "noopener");
   if (multi && k === "b") return decide(curies());
   if (multi && digit) {
     const i = +digit[1] - 1;

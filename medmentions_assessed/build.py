@@ -3,6 +3,7 @@ Builds the MedMentions-assessed linking benchmark from a dump of the bagel-eval 
 
     python medmentions_assessed/build.py prepare --dump ~/Projects/bagel-eval-postgres-dump.sql
     python medmentions_assessed/adjudicate/app.py          # adjudicate the conflicts
+    python medmentions_assessed/build.py scope              # decide scope once; writes the committed scope.jsonl
     python medmentions_assessed/build.py truth              # write medmentions_assessed/truth.jsonl
 
 Each assessment says whether a proposed CURIE is the exact match for a mention (the proposals were exact matches
@@ -10,14 +11,19 @@ from MedMentions, gpt-oss or o3-mini). A (mention, CURIE) judgment enters the tr
 - two assessors gave the same verdict (both agree -> correct, both disagree -> incorrect), or
 - they conflicted and the adjudicator decided. Conflicts within the adjudicator's own assessment pair are
   resolved in the adjudicator's favor without review.
-Single-assessor judgments and judgments involving "unsure" are left out.
+Single-assessor judgments and judgments involving "unsure" are left out, and so are mentions that scope.jsonl marks
+out of scope.
+
+The truth set holds identifiers exactly as assessed; whether a linker's output matches one is decided at evaluation
+time, so the benchmark doesn't depend on a Babel release. NodeNorm is used only to label terms for display in the
+adjudication app, and once, by `scope`, to type MedMentions concepts that bagel-eval has no type for; that scope
+decision is frozen in scope.jsonl.
 
 Outputs contain no assessor names.
 """
 import argparse
 import json
 from collections import defaultdict
-from datetime import date
 from pathlib import Path
 
 import httpx
@@ -28,10 +34,32 @@ CONFLICTS = WORK / "conflicts.jsonl"
 JUDGMENTS = WORK / "judgments.jsonl"
 ADJUDICATIONS = HERE / "adjudications.jsonl"
 TRUTH = HERE / "truth.jsonl"
+DOCUMENTS = HERE / "documents.jsonl"  # full text per document, for document-level steps such as abbreviations
+SCOPE = HERE / "scope.jsonl"
 
 TABLES = ("abstracts", "recognized_entities", "assessment", "results", "entities")
 ASSESSOR_ALIASES = {"Hong Yi": "Hong", "Sua\\parna": "Suparna"}  # same people under two names
 ADJUDICATOR = "Chris"
+# Mentions whose MedMentions-assigned concept has one of these types are not biomedical entities worth linking
+# ("negative", "analysis", "management", "worldwide", "patients", ...) and are left out of the truth set.
+OUT_OF_SCOPE_TYPES = {
+    "biolink:InformationContentEntity", "biolink:Publication", "biolink:Activity", "biolink:Agent", "biolink:Device",
+    "biolink:Phenomenon", "biolink:GeographicLocation", "biolink:Cohort", "biolink:PopulationOfIndividualOrganisms",
+}
+# MedMentions concepts (UMLS 2017) with no type in bagel-eval or current NodeNorm that aren't entities either;
+# mentions linked to them are left out. Untyped concepts that are real entities (e.g. retired CUIs for colorectal
+# cancer or TACE) are kept.
+OUT_OF_SCOPE_CONCEPTS = {
+    "UMLS:C0243126",  # incorporate / incorporation
+    "UMLS:C1443182",  # calculated
+    "UMLS:C1979936",  # nucleated
+    "UMLS:C0220911",  # serological
+    "UMLS:C0024752",  # human (retired)
+    "UMLS:C1836348",  # severe disorder
+    "UMLS:C1858576",  # heterogeneous disorders
+    "UMLS:C2986808",  # iTRAQ-labeled -> "Radioactive Label"
+    "UMLS:C1320357",  # pain intensity -> "Pain Distress Question"
+}
 NODENORM = "https://nodenormalization-sri.renci.org/get_normalized_nodes"
 
 
@@ -84,6 +112,12 @@ def judgment_status(verdicts: dict[str, str]) -> str:
     return "conflict"
 
 
+def babel_version() -> str:
+    response = httpx.get(NODENORM.replace("get_normalized_nodes", "status"), timeout=60)
+    response.raise_for_status()
+    return response.json()["babel_version"]
+
+
 def normalize(curies: list[str]) -> dict[str, dict]:
     """Current NodeNorm preferred identifier, label, type and description for each CURIE (None if unknown)."""
     out = {}
@@ -106,27 +140,35 @@ def prepare(dump: Path) -> None:
     mentions = {r["id"]: r for r in t["recognized_entities"]}
     entities = {r["identifier"]: r for r in t["entities"]}
     proposed = defaultdict(set)
+    medmentions = {}
     for r in t["results"]:
         if r["identifier"]:
             proposed[(r["idx"], r["identifier"])].add(r["model"])
+            if r["model"] == "medmentions":
+                medmentions[r["idx"]] = r["identifier"]
     verdicts = defaultdict(dict)
     for r in t["assessment"]:
         verdicts[(r["idx"], r["identifier"])][ASSESSOR_ALIASES.get(r["assessor"], r["assessor"])] = r["assessment"]
-    normalized = normalize(sorted({curie for _, curie in verdicts}))
+    judged_mentions = {idx for idx, _ in verdicts}
+    display = normalize(sorted({curie for _, curie in verdicts}))  # only to label terms in the adjudication app
 
     WORK.mkdir(exist_ok=True)
     judgments, queue = [], defaultdict(list)
     for (idx, curie), by_assessor in sorted(verdicts.items(), key=lambda kv: (int(kv[0][0]), kv[0][1])):
         status = judgment_status(by_assessor)
         stored = entities.get(curie, {})
-        node = normalized.get(curie) or {}
+        node = display.get(curie) or {}
         judgment = {
-            "mention_id": idx, "curie": curie, "babel_id": node.get("babel_id"),
-            "label": stored.get("label") or node.get("label", ""),
-            "type": stored.get("type") or node.get("type", ""),
-            "description": stored.get("description") or node.get("description", ""),
+            "mention_id": idx, "curie": curie,
+            # as bagel-eval showed it to the assessors; null when bagel-eval had no label/type
+            "label": stored.get("label") or None, "type": stored.get("type") or None,
             "proposed_by": sorted(proposed.get((idx, curie), [])),
             "status": status,
+            # for the adjudication app only; not part of the benchmark
+            "display": {"label": stored.get("label") or node.get("label", ""),
+                        "type": stored.get("type") or node.get("type", ""),
+                        "description": stored.get("description") or node.get("description", ""),
+                        "babel_id": node.get("babel_id")},
         }
         if status == "conflict" and ADJUDICATOR in by_assessor:
             judgment["status"] = "adjudicated_correct" if by_assessor[ADJUDICATOR] == "agree" \
@@ -145,7 +187,9 @@ def prepare(dump: Path) -> None:
                                   "terms": queue[idx]}) + "\n")
     with open(WORK / "mentions.json", "w") as out:
         json.dump({idx: {"pmid": mentions[idx]["pmid"], "mention": mentions[idx]["original_text"],
-                         "expanded": mentions[idx]["expanded_text"]} for idx in {j["mention_id"] for j in judgments}},
+                         "expanded": mentions[idx]["expanded_text"], "medmentions_curie": medmentions.get(idx),
+                         "medmentions_type": entities.get(medmentions.get(idx), {}).get("type") or None}
+                   for idx in {j["mention_id"] for j in judgments}},
                   out)
     with open(WORK / "abstracts.json", "w") as out:
         json.dump({m["pmid"]: abstracts[m["pmid"]] for m in (mentions[i] for i in {j["mention_id"] for j in judgments})},
@@ -179,10 +223,38 @@ def load_adjudications() -> dict[tuple[str, str], str]:
             for curie, verdict in record.get("verdicts", {}).items()}
 
 
+def scope() -> None:
+    """
+    Decides which mentions are in scope and freezes the decision in scope.jsonl. A mention's type is the type of the
+    concept MedMentions linked it to: bagel-eval's, or current NodeNorm's when bagel-eval has none. Rerun only to
+    change the scope deliberately; truth() never recomputes it.
+    """
+    mentions = json.loads((WORK / "mentions.json").read_text())
+    untyped = sorted({m["medmentions_curie"] for m in mentions.values() if m["medmentions_curie"] and not m["medmentions_type"]})
+    version = babel_version()
+    nodenorm_types = {c: (n or {}).get("type") for c, n in normalize(untyped).items()}
+    with open(SCOPE, "w") as out:
+        for idx in sorted(mentions, key=int):
+            m = mentions[idx]
+            if m["medmentions_type"]:
+                mention_type, source = m["medmentions_type"], "bagel-eval"
+            elif nodenorm_types.get(m["medmentions_curie"]):
+                mention_type, source = nodenorm_types[m["medmentions_curie"]], f"nodenorm (Babel {version})"
+            else:
+                mention_type, source = None, None
+            reason = ("type" if mention_type in OUT_OF_SCOPE_TYPES else
+                      "concept" if m["medmentions_curie"] in OUT_OF_SCOPE_CONCEPTS else None)
+            out.write(json.dumps({"mention_id": idx, "mention": m["mention"], "medmentions_curie": m["medmentions_curie"],
+                                  "mention_type": mention_type, "type_source": source, "in_scope": reason is None,
+                                  "out_of_scope_reason": reason}) + "\n")
+    print(f"wrote scope for {len(mentions)} mentions to {SCOPE} (Babel {version} used for {len(untyped)} untyped concepts)")
+
+
 def truth() -> None:
     judgments = [json.loads(line) for line in JUDGMENTS.read_text().splitlines()]
     mentions = json.loads((WORK / "mentions.json").read_text())
     abstracts = json.loads((WORK / "abstracts.json").read_text())
+    scopes = {s["mention_id"]: s for s in map(json.loads, SCOPE.read_text().splitlines())}
     adjudicated = load_adjudications()
     by_mention = defaultdict(list)
     unresolved = 0
@@ -198,16 +270,27 @@ def truth() -> None:
             continue
         verdict, basis = status.split("_", 1)[1], status.split("_", 1)[0]
         by_mention[j["mention_id"]].append({
-            "curie": j["curie"], "babel_id": j["babel_id"], "label": j["label"], "type": j["type"],
+            "curie": j["curie"], "label": j["label"], "type": j["type"],
             "verdict": verdict, "basis": basis, "proposed_by": j["proposed_by"]})
+    missing = [idx for idx in by_mention if idx not in scopes]
+    if missing:
+        raise ValueError(f"{len(missing)} mentions have no scope decision (e.g. {missing[:3]}); run `build.py scope`")
+    out_of_scope = [idx for idx in by_mention if not scopes[idx]["in_scope"]]
+    for idx in out_of_scope:
+        del by_mention[idx]
     with open(TRUTH, "w") as out:
         for idx in sorted(by_mention, key=int):
             m = mentions[idx]
             out.write(json.dumps({"id": f"mm-assessed-{idx}", "pmid": m["pmid"], "text": abstracts[m["pmid"]],
                                   "mention": m["mention"], "expanded": m["expanded"],
-                                  "judgments": by_mention[idx], "nodenorm_date": str(date.today())}) + "\n")
+                                  "mention_type": scopes[idx]["mention_type"], "medmentions_curie": m["medmentions_curie"],
+                                  "closed_world": False, "judgments": by_mention[idx]}) + "\n")
+    with open(DOCUMENTS, "w") as out:
+        for pmid in sorted({mentions[idx]["pmid"] for idx in by_mention}, key=int):
+            out.write(json.dumps({"id": pmid, "text": abstracts[pmid]}) + "\n")
     n = sum(len(v) for v in by_mention.values())
-    print(f"wrote {len(by_mention)} mentions / {n} judgments to {TRUTH}; {unresolved} conflicts not yet adjudicated")
+    print(f"wrote {len(by_mention)} mentions / {n} judgments to {TRUTH}; left out {len(out_of_scope)} out-of-scope "
+          f"mentions; {unresolved} conflicts not yet adjudicated")
 
 
 def main():
@@ -215,9 +298,10 @@ def main():
     sub = parser.add_subparsers(dest="command", required=True)
     p = sub.add_parser("prepare", help="read the bagel-eval dump; write the verdict table and adjudication queue")
     p.add_argument("--dump", type=Path, required=True)
+    sub.add_parser("scope", help="decide which mentions are in scope; writes the committed scope.jsonl")
     sub.add_parser("truth", help="combine concordant verdicts and adjudications into truth.jsonl")
     args = parser.parse_args()
-    prepare(args.dump) if args.command == "prepare" else truth()
+    {"prepare": lambda: prepare(args.dump), "scope": scope, "truth": truth}[args.command]()
 
 
 if __name__ == "__main__":
